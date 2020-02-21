@@ -97,3 +97,35 @@ a {
     place-self: center start;
     padding-left: 3%;
 }
+
+
+.r_video {
+    border: 3px solid #eeeeee;
+    height: 95%;
+    width: 95%;
+    background-color: #333333;
+    border-radius: 20px;
+}
+
+.r_dot {
+    background-color: #ff000000;
+    border-radius: 10px;
+    height: 8px;
+    width: 8px;
+    position: relative;
+    top: 3%;
+    left: 97%;
+    animation: dot 2s infinite ease;
+}
+
+@keyframes dot {
+    0% {
+        background-color: #ff0000ff;
+    }
+    50% {
+        background-color: #ff000000;
+    }
+    100% {
+        background-color: #ff0000ff;
+    }
+}
