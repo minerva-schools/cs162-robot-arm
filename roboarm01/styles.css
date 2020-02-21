@@ -98,7 +98,6 @@ a {
     padding-left: 3%;
 }
 
-
 .r_video {
     border: 3px solid #eeeeee;
     height: 95%;
@@ -128,4 +127,17 @@ a {
     100% {
         background-color: #ff0000ff;
     }
+
+.buttons{
+    place-self: center end;
+    padding-right: 3%;
+
+}
+
+.main_button {
+    color: inherit;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid #eeeeee;
+    border-radius: 15px;
+    background-color: #444444
 }
