@@ -97,3 +97,12 @@ a {
     place-self: center start;
     padding-left: 3%;
 }
+
+.main_button {
+    color: inherit;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid #eeeeee;
+    border-radius: 15px;
+    background-color: #444444
+
+}
