@@ -98,6 +98,12 @@ a {
     padding-left: 3%;
 }
 
+.buttons{
+    place-self: center end;
+    padding-right: 3%;
+
+}
+
 .main_button {
     color: inherit;
     padding: 10px 10px 10px 10px;
