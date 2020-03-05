@@ -88,24 +88,26 @@ a {
     width: 100vw;
     background-color: #000000;
     color: white;
-    grid-template-columns: 1fr;
-    grid-template-rows: 5% 80px 1fr 5%;
+    grid-template-columns: 1fr 10%;
+    grid-template-rows: 8% 60px 1fr 5%;
     grid-template-areas:
-        "title"
-        "buttons"
-        "video"
-        "credits";
+        "title settings"
+        "buttons buttons"
+        "video video"
+        "credits credits";
     place-items: center center;
 
 
 }
 
 .small_logo {
+    grid-area: title;
     place-self: center start;
     padding-left: 3%;
 }
 
 .r_video {
+    grid-area: video;
     border: 3px solid #eeeeee;
     height: 95%;
     width: 95%;
@@ -125,6 +127,7 @@ video {
 }
 
 .buttons{
+    grid-area: buttons;
     place-self: center end;
     padding-right: 3%;
 
@@ -136,4 +139,42 @@ video {
     border: 2px solid #eeeeee;
     border-radius: 15px;
     background-color: #444444
+}
+
+.settings_button {
+    grid-area: settings;
+    color: white;
+    height: 5vh;
+    transition: transform 0.3s;
+}
+
+.settings_button:hover,
+.settings_button:active {
+    transform: scale(1.2);
+}
+
+.settings_button img {
+    height: 100%;
+    width: auto;
+}
+
+.settings_dropdown {
+    visibility: hidden;
+    position: absolute;
+    top: 8%;
+    right: 2%;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.settings_dropdown_option {
+    padding: 8px;
+    width: 100%;
+    text-align: right;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    background-color: #333333;
+
 }
