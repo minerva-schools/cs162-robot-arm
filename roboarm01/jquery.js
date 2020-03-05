@@ -1,11 +1,14 @@
 $(document).ready(function () {
     // log-in form display
-    $('.log-in-button').click(function () {
-        $("#myForm").css(display: "block");
-    })
+    $('.log_in_button').click(function () {
+        console.log("WORK !!!");
+        $("#myForm").css({display: "block"});
+        $('.form-parent').css({visibility: "visible"});
+    });
     $('.cancel').click(function () {
-        $("#myForm").css(display: "none");
-    })
+        $("#myForm").css({display: "none"});
+        $('.form-parent').css({visibility: "hidden"});
+    });
 
     // toggle the settings dropdown
     $('.settings_button').click(function () {
