@@ -1,4 +1,12 @@
 $(document).ready(function () {
+    // log-in form display
+    $('.log-in-button').click(function () {
+        $("#myForm").css(display: "block");
+    })
+    $('.cancel').click(function () {
+        $("#myForm").css(display: "none");
+    })
+
     // toggle the settings dropdown
     $('.settings_button').click(function () {
         console.log("FUNCTION CALLED!");
@@ -18,7 +26,8 @@ $(document).ready(function () {
                 opacity: 0
             }, 300, function () {
                 $('.settings_dropdown').css({
-                visibility: 'hidden'});
+                    visibility: 'hidden'
+                });
             });
         }
     });
