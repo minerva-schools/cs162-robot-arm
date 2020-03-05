@@ -87,7 +87,7 @@ a {
     display: grid;
     height: 100vh;
     width: 100vw;
-    background-color: black;
+    background-color: #000000;
     color: white;
     grid-template-columns: 1fr;
     grid-template-rows: 5% 80px 1fr 5%;
@@ -110,32 +110,19 @@ a {
     border: 3px solid #eeeeee;
     height: 95%;
     width: 95%;
-    background-color: #333333;
+    background-color: #33333300;
     border-radius: 20px;
 }
 
-.r_dot {
-    background-color: #ff000000;
-    border-radius: 10px;
-    height: 8px;
-    width: 8px;
-    position: relative;
-    top: 3%;
-    left: 97%;
-    animation: dot 2s infinite ease;
-}
-
-@keyframes dot {
-    0% {
-        background-color: #ff0000ff;
-    }
-    50% {
-        background-color: #ff000000;
-    }
-    100% {
-        background-color: #ff0000ff;
-    }
-
+video {
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+    width: 80vw;
+    height: 70vh;
+    z-index: 0;
+    background-size: cover;
+    overflow: hidden;
 }
 
 .buttons{
