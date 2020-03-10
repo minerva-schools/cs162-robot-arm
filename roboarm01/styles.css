@@ -98,14 +98,25 @@ a {
         "video video"
         "credits credits";
     place-items: center center;
+}
 
-
+.rec_obs {
+    grid-template-columns: 1fr 10%;
+    grid-template-rows: 10% 1fr 5%;
+    grid-template-areas:
+        "title settings"
+        "video video"
+        "credits credits";
 }
 
 .small_logo {
     grid-area: title;
     place-self: center start;
     padding-left: 3%;
+}
+
+.medium_logo {
+    font-size: 1.3em;
 }
 
 .r_video {
@@ -153,6 +164,7 @@ video {
 .settings_button:hover,
 .settings_button:active {
     transform: scale(1.2);
+    cursor: pointer;
 }
 
 .settings_button img {
@@ -169,6 +181,11 @@ video {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+}
+
+.settings_dropdown:hover,
+.settings_dropdown:active {
+    cursor: pointer;
 }
 
 .settings_dropdown_option {
@@ -241,7 +258,7 @@ video {
     background-color: #444444;
 }
 
-.form-container .btn:hover,
-.open-button:hover {
-    opacity: 1;
+.btn:hover,
+.btn:active {
+    cursor: pointer;
 }
