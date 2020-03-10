@@ -250,7 +250,42 @@ video {
     transform: scale(0.9);
 }
 
-/* The popup form - hidden by default */
+.loader {
+    position: absolute;
+    visibility: visible;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    z-index: 3;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 25px 1fr;
+    grid-template-areas:
+        "l_arm"
+        "l_text"
+        "l_bar";
+    place-items: end center;
+    background-color: #000000;
+    color: white;
+}
+
+.loader_arm {
+    margin-bottom: 40px;
+    grid-area: l_arm;
+}
+
+.loader_text {
+    grid-area: l_text;
+}
+
+.loader_bar {
+    grid-area: l_bar;
+    place-self: start center;
+    margin-top: 10px;
+}
+
+/* The popup login form - hidden by default */
 .form-parent {
     position: absolute;
     visibility: hidden;
