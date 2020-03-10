@@ -78,6 +78,13 @@ a {
     background-color: #444444
 }
 
+.sign-in-buttons:hover {
+    cursor: pointer;
+}
+
+.sign-in-buttons:active {
+    transform: scale(0.9);
+}
 
 .credits {
     grid-area: credits;
@@ -157,13 +164,21 @@ video {
 
 }
 
-.button_up, .button_down, .button_left, .button_right {
+.main_button {
     position: absolute;
     color: inherit;
     padding: 10px 10px 10px 10px;
     border: 2px solid #eeeeee;
     border-radius: 15px;
     background-color: #444444;
+}
+
+.main_button:hover {
+    cursor: pointer;
+}
+
+.main_button:active {
+    transform: scale(0.9);
 }
 
 .button_up {
@@ -231,6 +246,10 @@ video {
     background-color: #333333;
 }
 
+.settings_dropdown_option:active {
+    transform: scale(0.9);
+}
+
 /* The popup form - hidden by default */
 .form-parent {
     position: absolute;
@@ -292,7 +311,10 @@ video {
     background-color: #444444;
 }
 
-.btn:hover,
-.btn:active {
+.btn:hover {
     cursor: pointer;
+}
+
+.btn:active {
+    transform: scale(0.95);
 }
