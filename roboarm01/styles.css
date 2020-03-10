@@ -82,7 +82,7 @@ a {
     grid-area: credits;
 }
 
-
+/* IF WE NEED TO ADD A MENU BAR - SCHEDULE PAGE< PEROSNAL PAGE, ETC...
 .recording {
     display: grid;
     height: 100vh;
@@ -97,8 +97,22 @@ a {
         "video video"
         "credits credits";
     place-items: center center;
+} */
 
 
+.recording {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: #000000;
+    color: white;
+    grid-template-columns: 1fr 10%;
+    grid-template-rows: 8% 1fr 5%;
+    grid-template-areas:
+        "title settings"
+        "video video"
+        "credits credits";
+    place-items: center center;
 }
 
 .small_logo {
@@ -119,7 +133,7 @@ a {
 video {
     position: absolute;
     right: 10%;
-    bottom: 10%;
+    bottom: 13%;
     width: 80vw;
     height: 70vh;
     z-index: 0;
@@ -134,13 +148,36 @@ video {
 
 }
 
-.main_button {
+.button_up, .button_down, .button_left, .button_right {
+    position: absolute;
     color: inherit;
     padding: 10px 10px 10px 10px;
     border: 2px solid #eeeeee;
     border-radius: 15px;
-    background-color: #444444
+    background-color: #444444;
 }
+
+.button_up {
+    left: 45%;
+    top: 86px;
+}
+
+.button_down {
+    left: 45%;
+    bottom: 62px;
+}
+
+.button_right {
+    right: 4%;
+    bottom: 350px;
+
+}
+
+.button_left {
+    left: 4%;
+    bottom: 340px;
+}
+
 
 .settings_button {
     grid-area: settings;
