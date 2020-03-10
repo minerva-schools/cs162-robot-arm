@@ -283,6 +283,20 @@ video {
     grid-area: l_bar;
     place-self: start center;
     margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid #eee;
+}
+
+.loader_bar::-webkit-progress-bar {
+    border-radius: 8px;
+}
+.loader_bar::-webkit-progress-value {
+    background-color: #eee;
+    border-radius: 5px;
+}
+.loader_bar::-moz-progress-bar {
+    background-color: #eee;
+    border-radius: 5px;
 }
 
 /* The popup login form - hidden by default */
@@ -301,6 +315,7 @@ video {
         "form";
     place-items: center center;
 }
+
 .form-popup {
     grid-area: form;
     display: none;
