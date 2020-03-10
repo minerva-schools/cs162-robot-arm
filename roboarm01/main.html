@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RoboArm Viewer</title>
+    <meta name="description" content="RoboArm | CS162 project">
+    <meta name="author" content="Mikulas Plesak">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Just+Another+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <main class="recording">
+        <div class="title small_logo">
+            <h3>RoboArm</h3>
+        </div>
+        <button class="settings_button"><img src="cog.png"></button>
+        <div class="settings_dropdown">
+            <div class="settings_dropdown_option">Change controls</div>
+            <div class="settings_dropdown_option">Upload a code file</div>
+            <div class="settings_dropdown_option">Log out</div>
+        </div>
+
+        <div class="r_video">
+            <video autoplay muted loop src="demo.mp4" type="video/mp4"></video>
+            <button class="main_button button_up">Arm up!</button>
+            <button class="main_button button_down">Arm down!</button>
+            <button class="main_button button_left">Rotate Left!</button>
+            <button class="main_button button_right">Rotate Right!</button>
+        </div>
+
+        <div class="credits">&copy; RoboArm Team 2020</div>
+    </main>
+</body>
+
+</html>

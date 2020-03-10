@@ -1,0 +1,284 @@
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+}
+
+.landing {
+    z-index: 5;
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    grid-template-columns: 1fr 180px 1fr;
+    grid-template-rows: 1fr 5% 150px 5% 1fr 5%;
+    grid-template-areas:
+        ". . ."
+        ". title ."
+        ". roboarm ."
+        ". sign-in ."
+        ". . ."
+        "credits credits credits";
+    place-items: center center;
+}
+
+.title {
+    grid-area: title;
+}
+
+.roboarm {
+    grid-area: roboarm;
+}
+
+.roboarm img {
+    height: 70px;
+    position: relative;
+
+}
+
+.anim-arm {
+    position: relative;
+    left: -15px;
+    top: 25px;
+    transform-origin: -3px -8px;
+    animation: spin 2s infinite ease;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    50% {
+        transform: rotate(-90deg)
+    }
+}
+
+.sign-in {
+    grid-area: sign-in;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.sign-in-buttons {
+    color: inherit;
+    border: 2px solid #eeeeee;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #444444
+}
+
+
+.credits {
+    grid-area: credits;
+}
+
+/* IF WE NEED TO ADD A MENU BAR - SCHEDULE PAGE< PEROSNAL PAGE, ETC...
+.recording {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: #000000;
+    color: white;
+    grid-template-columns: 1fr 10%;
+    grid-template-rows: 8% 60px 1fr 5%;
+    grid-template-areas:
+        "title settings"
+        "buttons buttons"
+        "video video"
+        "credits credits";
+    place-items: center center;
+} */
+
+
+.recording {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: #000000;
+    color: white;
+    grid-template-columns: 1fr 10%;
+    grid-template-rows: 8% 1fr 5%;
+    grid-template-areas:
+        "title settings"
+        "video video"
+        "credits credits";
+    place-items: center center;
+}
+
+.small_logo {
+    grid-area: title;
+    place-self: center start;
+    padding-left: 3%;
+}
+
+.r_video {
+    grid-area: video;
+    border: 3px solid #eeeeee;
+    height: 95%;
+    width: 95%;
+    background-color: #33333300;
+    border-radius: 20px;
+}
+
+video {
+    position: absolute;
+    right: 10%;
+    bottom: 13%;
+    width: 80vw;
+    height: 70vh;
+    z-index: 0;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.buttons {
+    grid-area: buttons;
+    place-self: center end;
+    padding-right: 3%;
+
+}
+
+.button_up, .button_down, .button_left, .button_right {
+    position: absolute;
+    color: inherit;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid #eeeeee;
+    border-radius: 15px;
+    background-color: #444444;
+}
+
+.button_up {
+    left: 45%;
+    top: 86px;
+}
+
+.button_down {
+    left: 45%;
+    bottom: 62px;
+}
+
+.button_right {
+    right: 4%;
+    bottom: 350px;
+
+}
+
+.button_left {
+    left: 4%;
+    bottom: 340px;
+}
+
+
+.settings_button {
+    grid-area: settings;
+    color: white;
+    height: 5vh;
+    transition: transform 0.3s;
+}
+
+.settings_button:hover,
+.settings_button:active {
+    transform: scale(1.2);
+}
+
+.settings_button img {
+    height: 100%;
+    width: auto;
+}
+
+.settings_dropdown {
+    visibility: hidden;
+    position: absolute;
+    top: 8%;
+    right: 2%;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.settings_dropdown_option {
+    padding: 8px;
+    width: 100%;
+    text-align: right;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    background-color: #333333;
+}
+
+/* The popup form - hidden by default */
+.form-parent {
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    z-index: 3;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "form";
+    place-items: center center;
+}
+.form-popup {
+    grid-area: form;
+    display: none;
+    padding: 10px 10px 10px 10px;
+    border: 4px solid #eeeeee;
+    border-radius: 15px;
+    z-index: 9;
+}
+
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+
+.form-container input[type=text],
+.form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+.form-container input[type=text]:focus,
+.form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.form-container .btn {
+    color: white;
+    border: 2px solid #eeeeee;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #444444;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-container .cancel {
+    background-color: #444444;
+}
+
+.form-container .btn:hover,
+.open-button:hover {
+    opacity: 1;
+}

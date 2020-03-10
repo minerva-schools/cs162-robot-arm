@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RoboArm Viewer</title>
+    <meta name="description" content="RoboArm | CS162 project">
+    <meta name="author" content="Mikulas Plesak">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Just+Another+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <div class="landing">
+        <div class="title">
+            <h1>RoboArm</h1>
+        </div>
+        <div class="roboarm">
+            <img src="anim-joint.png">
+            <img class="anim-arm" src="anim-arm.png">
+        </div>
+        <div class="sign-in">
+            <div>
+                <button class="sign-in-buttons" onClick="window.location = 'main.html'">
+                    <p>Observe!</p>
+                </button>
+            </div>
+            <div>
+                <button class="sign-in-buttons log_in_button">
+                    <p>Sign In!</p>
+                </button>
+            </div>
+        </div>
+        <div class="credits">&copy; RoboArm Team 2020</div>
+    </div>
+
+
+    <div class="form-parent">
+    <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+            <h1>Login</h1>
+
+            <label for="email"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button href="main.html" type="submit" class="btn">Login</button>
+            <button type="button" class="btn cancel">Close</button>
+        </form>
+    </div>
+    </div>
+</body></html>
