@@ -1,4 +1,15 @@
 $(document).ready(function () {
+    // log-in form display
+    $('.log_in_button').click(function () {
+        console.log("WORK !!!");
+        $("#myForm").css({display: "block"});
+        $('.form-parent').css({visibility: "visible"});
+    });
+    $('.cancel').click(function () {
+        $("#myForm").css({display: "none"});
+        $('.form-parent').css({visibility: "hidden"});
+    });
+
     // toggle the settings dropdown
     $('.settings_button').click(function () {
         console.log("FUNCTION CALLED!");
@@ -18,7 +29,8 @@ $(document).ready(function () {
                 opacity: 0
             }, 300, function () {
                 $('.settings_dropdown').css({
-                visibility: 'hidden'});
+                    visibility: 'hidden'
+                });
             });
         }
     });

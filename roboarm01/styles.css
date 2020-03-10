@@ -57,6 +57,7 @@ a {
     0% {
         transform: rotate(0deg)
     }
+
     50% {
         transform: rotate(-90deg)
     }
@@ -69,7 +70,7 @@ a {
     width: 100%;
 }
 
-.sign-in-button {
+.sign-in-buttons {
     color: inherit;
     border: 2px solid #eeeeee;
     border-radius: 15px;
@@ -141,7 +142,7 @@ video {
     overflow: hidden;
 }
 
-.buttons{
+.buttons {
     grid-area: buttons;
     place-self: center end;
     padding-right: 3%;
@@ -217,51 +218,67 @@ video {
 }
 
 /* The popup form - hidden by default */
+.form-parent {
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    z-index: 3;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "form";
+    place-items: center center;
+}
 .form-popup {
-  display: none;
-  position: fixed;
-  bottom: 30%;
-  right: 35%;
-  padding: 10px 10px 10px 10px;
-  border: 4px solid #eeeeee;
-  border-radius: 15px;
-  z-index: 9;
+    grid-area: form;
+    display: none;
+    padding: 10px 10px 10px 10px;
+    border: 4px solid #eeeeee;
+    border-radius: 15px;
+    z-index: 9;
 }
 
 .form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: black;
-  color: white;
+    max-width: 300px;
+    padding: 10px;
+    background-color: black;
+    color: white;
 }
 
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
+.form-container input[type=text],
+.form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
 }
 
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
+.form-container input[type=text]:focus,
+.form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
 }
 
 .form-container .btn {
-  color: white;
-  border: 2px solid #eeeeee;
-  border-radius: 15px;
-  padding: 15px;
-  background-color: #444444;
-  width: 100%;
-  margin-bottom:10px;
+    color: white;
+    border: 2px solid #eeeeee;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #444444;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .form-container .cancel {
-  background-color: #444444;
+    background-color: #444444;
 }
 
-.form-container .btn:hover, .open-button:hover {
-  opacity: 1;
+.form-container .btn:hover,
+.open-button:hover {
+    opacity: 1;
 }
