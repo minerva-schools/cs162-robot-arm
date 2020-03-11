@@ -44,6 +44,7 @@ $(document).ready(function () {
         }
     });
 
+    // loading animation
     $('.loader').ready(function () {
         var time_int = 80;
         loader = setInterval(progress, time_int);
