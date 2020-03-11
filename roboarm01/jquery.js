@@ -71,9 +71,46 @@ $(document).ready(function () {
                 break;
             case 100:
                 clearInterval(loader);
-                $('.loader').css({visibility: "hidden"});
+                $('.loader').css({
+                    visibility: "hidden"
+                });
                 break;
         }
     }
+
+    // change of controls
+    $('.main_button').ready(function () {
+        $('.main_button').css({
+            visibility: "hidden"
+        });
+    });
+    var controls = "sliders";
+
+    $('.change_controls').click(function () {
+        if (controls == "sliders") {
+            $('.main_button').css({
+                visibility: "visible"
+            });
+            $('.slider').css({
+                visibility: "hidden"
+            });
+            $('.slider1').css({
+                visibility: "hidden"
+            });
+            controls = "buttons";
+        } else {
+            $('.main_button').css({
+                visibility: "hidden"
+            });
+            $('.slider').css({
+                visibility: "visible"
+            });
+            $('.slider1').css({
+                visibility: "visible"
+            });
+            controls = "sliders";
+        }
+    });
+
 
 });
