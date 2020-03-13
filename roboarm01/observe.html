@@ -19,30 +19,20 @@
 </head>
 
 <body>
-    <div class="landing">
-        <div class="title">
-            <h1>RoboArm</h1>
+    <main class="recording rec_obs">
+        <div class="title small_logo medium_logo">
+            <h3>RoboArm: observer mode</h3>
         </div>
-        <div class="roboarm">
-            <img src="anim-joint.png">
-            <img class="anim-arm" src="anim-arm.png">
+        <button class="settings_button"><img src="cog.png"></button>
+        <div class="settings_dropdown">
+            <div class="settings_dropdown_option log_in_button">Log in</div>
         </div>
-        <div class="sign-in">
-            <div>
-                <button class="sign-in-buttons" onClick="window.location = 'observe.html'">
-                    <p>Observe!</p>
-                </button>
-            </div>
-            <div>
-                <button class="sign-in-buttons log_in_button">
-                    <p>Sign In!</p>
-                </button>
-            </div>
+        <div class="r_video">
+            <video autoplay muted loop src="demo.mp4" type="video/mp4"></video>
         </div>
+
         <div class="credits">&copy; RoboArm Team 2020</div>
-    </div>
-
-
+    </main>
     <div class="form-parent">
     <div class="form-popup" id="myForm">
         <form action="main.html" class="form-container">

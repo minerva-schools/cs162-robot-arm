@@ -1,3 +1,8 @@
+:root {
+    --light-grey: #eee;
+    --dark-grey: #444;
+}
+
 * {
     border: 0;
     margin: 0;
@@ -72,23 +77,30 @@ a {
 
 .sign-in-buttons {
     color: inherit;
-    border: 2px solid #eeeeee;
+    border: 2px solid white;
     border-radius: 15px;
     padding: 15px;
-    background-color: #444444
+    background-color: var(--dark-grey);
 }
 
+.sign-in-buttons:hover {
+    cursor: pointer;
+}
+
+.sign-in-buttons:active {
+    transform: scale(0.9);
+}
 
 .credits {
     grid-area: credits;
 }
 
-/* IF WE NEED TO ADD A MENU BAR - SCHEDULE PAGE< PEROSNAL PAGE, ETC...
+/* IF WE NEED TO ADD A MENU BAR - SCHEDULE PAGE, PEROSNAL PAGE, ETC...
 .recording {
     display: grid;
     height: 100vh;
     width: 100vw;
-    background-color: #000000;
+    background-color: black;
     color: white;
     grid-template-columns: 1fr 10%;
     grid-template-rows: 8% 60px 1fr 5%;
@@ -100,14 +112,13 @@ a {
     place-items: center center;
 } */
 
-
 .recording {
     display: grid;
     height: 100vh;
     width: 100vw;
-    background-color: #000000;
+    background-color: black;
     color: white;
-    grid-template-columns: 1fr 10%;
+    grid-template-columns: 1fr 100px;
     grid-template-rows: 8% 1fr 5%;
     grid-template-areas:
         "title settings"
@@ -116,18 +127,27 @@ a {
     place-items: center center;
 }
 
+.rec_obs {
+    grid-template-columns: 1fr 10%;
+    grid-template-rows: 10% 1fr 5%;
+}
+
 .small_logo {
     grid-area: title;
     place-self: center start;
     padding-left: 3%;
 }
 
+.medium_logo {
+    font-size: 1.3em;
+}
+
 .r_video {
     grid-area: video;
-    border: 3px solid #eeeeee;
+    border: 3px solid white;
     height: 95%;
     width: 95%;
-    background-color: #33333300;
+    background-color: var(--dark-grey);
     border-radius: 20px;
 }
 
@@ -149,36 +169,69 @@ video {
 
 }
 
-.button_up, .button_down, .button_left, .button_right {
-    position: absolute;
+.main_buttons {
+    position: relative;
+    left: 5%;
+    top: 80%;
+    display: grid;
+    width: 156px;
+    height: 103px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "l t r"
+        "l d r";
+    place-items: end center;
+    grid-gap: 3px;
+}
+
+.main_button {
     color: inherit;
-    padding: 10px 10px 10px 10px;
-    border: 2px solid #eeeeee;
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
     border-radius: 15px;
-    background-color: #444444;
+    background-color: black;
+}
+
+.main_button img {
+    height: 36px;
+    padding: 9px 0px 0px 9px;
+    width: auto;
+}
+
+.main_button:hover {
+    cursor: pointer;
+}
+
+.main_button:active {
+    transform: scale(0.9);
 }
 
 .button_up {
-    left: 45%;
-    top: 86px;
+    grid-area: t;
 }
 
 .button_down {
-    left: 45%;
-    bottom: 62px;
+    grid-area: d;
+}
+
+.button_down img {
 }
 
 .button_right {
-    right: 4%;
-    bottom: 350px;
+    grid-area: r;
+}
 
+.button_right img {
 }
 
 .button_left {
-    left: 4%;
-    bottom: 340px;
+    grid-area: l;
 }
 
+.button_left {
+}
 
 .settings_button {
     grid-area: settings;
@@ -190,6 +243,7 @@ video {
 .settings_button:hover,
 .settings_button:active {
     transform: scale(1.2);
+    cursor: pointer;
 }
 
 .settings_button img {
@@ -208,16 +262,76 @@ video {
     align-items: flex-end;
 }
 
+.settings_dropdown:hover,
+.settings_dropdown:active {
+    cursor: pointer;
+}
+
 .settings_dropdown_option {
     padding: 8px;
     width: 100%;
     text-align: right;
-    border: 1px solid #eeeeee;
+    border: 1px solid white;
     border-radius: 5px;
-    background-color: #333333;
+    background-color: var(--dark-grey);
 }
 
-/* The popup form - hidden by default */
+.settings_dropdown_option:active {
+    transform: scale(0.9);
+}
+
+.loader {
+    position: absolute;
+    visibility: visible;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    z-index: 3;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 25px 1fr;
+    grid-template-areas:
+        "l_arm"
+        "l_text"
+        "l_bar";
+    place-items: end center;
+    background-color: black;
+    color: white;
+}
+
+.loader_arm {
+    margin-bottom: 40px;
+    grid-area: l_arm;
+}
+
+.loader_text {
+    grid-area: l_text;
+}
+
+.loader_bar {
+    grid-area: l_bar;
+    place-self: start center;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid var(--light-grey);
+}
+
+.loader_bar::-webkit-progress-bar {
+    border-radius: 8px;
+}
+
+.loader_bar::-webkit-progress-value {
+    background-color: var(--light-grey);
+    border-radius: 5px;
+}
+
+.loader_bar::-moz-progress-bar {
+    background-color: var(--light-grey);
+    border-radius: 5px;
+}
+
+/* The popup login form - hidden by default */
 .form-parent {
     position: absolute;
     visibility: hidden;
@@ -233,11 +347,11 @@ video {
         "form";
     place-items: center center;
 }
+
 .form-popup {
     grid-area: form;
     display: none;
-    padding: 10px 10px 10px 10px;
-    border: 4px solid #eeeeee;
+    border: 5px solid var(--light-grey);
     border-radius: 15px;
     z-index: 9;
 }
@@ -246,39 +360,116 @@ video {
     max-width: 300px;
     padding: 10px;
     background-color: black;
+    border-radius: 7px;
     color: white;
 }
 
-.form-container input[type=text],
+.form-container input[type=email],
 .form-container input[type=password] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
     border: none;
-    background: #f1f1f1;
+    background: white;
 }
 
-.form-container input[type=text]:focus,
+.form-container input[type=email]:focus,
 .form-container input[type=password]:focus {
-    background-color: #ddd;
+    background-color: white;
     outline: none;
 }
 
 .form-container .btn {
     color: white;
-    border: 2px solid #eeeeee;
+    border: 2px solid white;
     border-radius: 15px;
     padding: 15px;
-    background-color: #444444;
+    background-color: var(--dark-grey);
     width: 100%;
     margin-bottom: 10px;
 }
 
 .form-container .cancel {
-    background-color: #444444;
+    background-color: var(--dark-grey);
 }
 
-.form-container .btn:hover,
-.open-button:hover {
+.fileUpload {
+    padding: 15px 0px;
+
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.slider {
+    position: absolute;
+    -webkit-appearance: none;
+    width: 100%;
+    border-radius: 5px;
+    background: var(--light-grey);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider_hor {
+    left: 15%;
+    bottom: 80px;
+    width: 70vw;
+    height: 10px;
+}
+
+.slider_ver {
+    left: -180px;
+    top: 50%;
+    width: 70vh;
+    height: 10px;
+    transform: rotate(90deg);
+}
+
+.slider:hover {
     opacity: 1;
+}
+
+.slider:focus {
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: var(--dark-grey);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: var(--dark-grey);
+    cursor: pointer;
+}
+
+.slider::-ms-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: var(--dark-grey);
+    cursor: pointer;
 }

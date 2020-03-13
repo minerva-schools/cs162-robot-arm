@@ -24,21 +24,49 @@
         </div>
         <button class="settings_button"><img src="cog.png"></button>
         <div class="settings_dropdown">
-            <div class="settings_dropdown_option">Change controls</div>
-            <div class="settings_dropdown_option">Upload a code file</div>
-            <div class="settings_dropdown_option">Log out</div>
+            <a class="settings_dropdown_option change_controls">
+                <div>Change controls</div>
+            </a>
+            <a class="settings_dropdown_option upload_button">
+                <div>Upload a code file</div>
+            </a>
+            <a href="index.html" class="settings_dropdown_option">
+                <div>Log out</div>
+            </a>
         </div>
 
         <div class="r_video">
             <video autoplay muted loop src="demo.mp4" type="video/mp4"></video>
-            <button class="main_button button_up">Arm up!</button>
-            <button class="main_button button_down">Arm down!</button>
-            <button class="main_button button_left">Rotate Left!</button>
-            <button class="main_button button_right">Rotate Right!</button>
+            <div class="main_buttons">
+                <div class="main_button button_top"><img src="a_t.png"></div>
+                <div class="main_button button_right"><img src="a_r.png"></div>
+                <div class="main_button button_down"><img src="a_d.png"></div>
+                <div class="main_button button_left"><img src="a_l.png"></div>
+            </div>
+            <input type="range" min="1" max="100" value="50" class="slider slider_ver" id="RightLeft">
+            <input type="range" min="1" max="100" value="50" class="slider slider_hor" id="UpDown">
         </div>
 
         <div class="credits">&copy; RoboArm Team 2020</div>
     </main>
-</body>
+    <div class="loader">
+        <div class="roboarm loader_arm">
+            <img src="anim-joint.png">
+            <img class="anim-arm" src="anim-arm.png">
+        </div>
+        <p class="loader_text">Logging you in...</p>
+        <progress class="loader_bar" id="loader_bar" value="0" max="100"></progress>
+    </div>
 
-</html>
+    <div class="form-parent">
+        <div class="form-popup" id="UploadFile">
+            <form action="main.html" class="form-container">
+                <label for="myfile"><h1>Upload a file</h1></label>
+                <input type="file" name="myfile" id="UploadedFile"  class="fileUpload" required>
+
+                <button href="main.html" type="submit" class="btn">Upload</button>
+                <button type="button" class="btn cancel" >Close</button>
+            </form>
+        </div>
+    </div>
+</body></html>
