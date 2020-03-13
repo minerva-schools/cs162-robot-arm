@@ -21,7 +21,7 @@
         <div class="title small_logo">
             <h3>RoboArm</h3>
         </div>
-        <button class="settings_button"><img src="cog.png"></button>
+        <button class="settings_button"><img src="cog.png" alt="settings icon"></button>
         <div class="settings_dropdown">
             <a class="settings_dropdown_option change_controls">
                 <div>Change controls</div>
@@ -35,12 +35,12 @@
         </div>
 
         <div class="r_video">
-            <video autoplay muted loop src="demo.mp4" type="video/mp4"></video>
+            <video autoplay muted loop src="demo.mp4"></video>
             <div class="main_buttons">
-                <div class="main_button button_top"><img src="a_t.png"></div>
-                <div class="main_button button_right"><img src="a_r.png"></div>
-                <div class="main_button button_down"><img src="a_d.png"></div>
-                <div class="main_button button_left"><img src="a_l.png"></div>
+                <div class="main_button button_top"><img src="a_t.png" alt="arrow up"></div>
+                <div class="main_button button_right"><img src="a_r.png" alt="arrow right"></div>
+                <div class="main_button button_down"><img src="a_d.png" alt="arrow down"></div>
+                <div class="main_button button_left"><img src="a_l.png" alt="arrow left"></div>
             </div>
             <input type="range" min="1" max="100" value="50" class="slider slider_ver" id="RightLeft">
             <input type="range" min="1" max="100" value="50" class="slider slider_hor" id="UpDown">
@@ -50,8 +50,8 @@
     </main>
     <div class="loader">
         <div class="roboarm loader_arm">
-            <img src="anim-joint.png">
-            <img class="anim-arm" src="anim-arm.png">
+            <img src="anim-joint.png" alt="Animated robot arm joint">
+            <img class="anim-arm" src="anim-arm.png" alt="Animated robot arm">
         </div>
         <p class="loader_text">Logging you in...</p>
         <progress class="loader_bar" id="loader_bar" value="0" max="100"></progress>
@@ -60,10 +60,11 @@
     <div class="form-parent">
         <div class="form-popup" id="UploadFile">
             <form action="main.html" class="form-container">
-                <label for="myfile"><h1>Upload a file</h1></label>
-                <input type="file" name="myfile" id="UploadedFile"  class="fileUpload" required>
+                <h1>Upload a file</h1>
+                <label for="myfile"></label>
+                <input type="file" name="myfile" id="myfile"  class="file_upload" required>
 
-                <button href="main.html" type="submit" class="btn">Upload</button>
+                <button type="submit" class="btn">Upload</button>
                 <button type="button" class="btn cancel" >Close</button>
             </form>
         </div>
