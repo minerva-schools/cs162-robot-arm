@@ -19,6 +19,26 @@ $(document).ready(function () {
         });
     });
 
+
+    // log-in form display
+    $('.upload_button').click(function () {
+        console.log("WORK !!!");
+        $("#UploadFile").css({
+            display: "block"
+        });
+        $('.form-parent').css({
+            visibility: "visible"
+        });
+    });
+    $('.cancel').click(function () {
+        $("#UploadFile").css({
+            display: "none"
+        });
+        $('.form-parent').css({
+            visibility: "hidden"
+        });
+    });
+
     // toggle the settings dropdown
     $('.settings_button').click(function () {
         console.log("FUNCTION CALLED!");
@@ -46,7 +66,7 @@ $(document).ready(function () {
 
     // loading animation
     $('.loader').ready(function () {
-        var time_int = 80;
+        var time_int = 10;
         loader = setInterval(progress, time_int);
         console.log("LOADING - STEP 1");
     });

@@ -27,7 +27,7 @@
             <a class="settings_dropdown_option change_controls">
                 <div>Change controls</div>
             </a>
-            <a class="settings_dropdown_option">
+            <a class="settings_dropdown_option upload_button">
                 <div>Upload a code file</div>
             </a>
             <a href="index.html" class="settings_dropdown_option">
@@ -54,5 +54,17 @@
         </div>
         <p class="loader_text">Logging you in...</p>
         <progress class="loader_bar" id="loader_bar" value="0" max="100"></progress>
+    </div>
+
+    <div class="form-parent">
+        <div class="form-popup" id="UploadFile">
+            <form action="main.html" class="form-container">
+                <label for="myfile"><h1>Upload a file</h1></label>
+                <input type="file" name="myfile" id="UploadedFile"  class="fileUpload" required>
+
+                <button href="main.html" type="submit" class="btn">Upload</button>
+                <button type="button" class="btn cancel" >Close</button>
+            </form>
+        </div>
     </div>
 </body></html>
