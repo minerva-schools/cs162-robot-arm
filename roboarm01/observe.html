@@ -11,7 +11,6 @@
     <meta name="author" content="Mikulas Plesak">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Just+Another+Hand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
@@ -23,12 +22,12 @@
         <div class="title small_logo medium_logo">
             <h3>RoboArm: observer mode</h3>
         </div>
-        <button class="settings_button"><img src="cog.png"></button>
+        <button class="settings_button"><img src="cog.png" alt="settings icon"></button>
         <div class="settings_dropdown">
             <div class="settings_dropdown_option log_in_button">Log in</div>
         </div>
         <div class="r_video">
-            <video autoplay muted loop src="demo.mp4" type="video/mp4"></video>
+            <video autoplay muted loop src="demo.mp4"></video>
         </div>
 
         <div class="credits">&copy; RoboArm Team 2020</div>
@@ -39,12 +38,12 @@
             <h1>Login</h1>
 
             <label for="email"><b>Email</b></label>
-            <input type="email" placeholder="Enter Email" name="email" required>
+            <input type="email" placeholder="Enter Email" name="email" id="email" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
-            <button href="main.html" type="submit" class="btn">Login</button>
+            <button type="submit" class="btn">Login</button>
             <button type="button" class="btn cancel">Close</button>
         </form>
     </div>
