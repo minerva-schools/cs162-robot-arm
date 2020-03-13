@@ -351,8 +351,7 @@ video {
 .form-popup {
     grid-area: form;
     display: none;
-    padding: 10px 10px 10px 10px;
-    border: 7px solid var(--light-grey);
+    border: 5px solid var(--light-grey);
     border-radius: 15px;
     z-index: 9;
 }
@@ -361,6 +360,7 @@ video {
     max-width: 300px;
     padding: 10px;
     background-color: black;
+    border-radius: 7px;
     color: white;
 }
 
