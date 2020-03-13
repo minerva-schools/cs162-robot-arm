@@ -118,7 +118,7 @@ a {
     width: 100vw;
     background-color: black;
     color: white;
-    grid-template-columns: 1fr 10%;
+    grid-template-columns: 1fr 100px;
     grid-template-rows: 8% 1fr 5%;
     grid-template-areas:
         "title settings"
