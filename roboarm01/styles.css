@@ -169,13 +169,35 @@ video {
 
 }
 
+.main_buttons {
+    position: relative;
+    left: 5%;
+    top: 80%;
+    display: grid;
+    width: 150px;
+    height: 100px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "l t r"
+        "l d r";
+    place-items: center center;
+
+}
+
 .main_button {
-    position: absolute;
     color: inherit;
-    padding: 10px 10px 10px 10px;
     border: 2px solid white;
+    width: 50px;
+    height: 50px;
     border-radius: 15px;
-    background-color: var(--dark-grey);
+    background-color: black;
+}
+
+.main_button img {
+    height: 36px;
+    width: auto;
+    padding: 9px 0px 0px 9px;
 }
 
 .main_button:hover {
@@ -187,26 +209,29 @@ video {
 }
 
 .button_up {
-    left: 45%;
-    top: 86px;
+    grid-area: t;
 }
 
 .button_down {
-    left: 45%;
-    bottom: 62px;
+    grid-area: d;
+}
+
+.button_down img {
 }
 
 .button_right {
-    right: 4%;
-    bottom: 350px;
+    grid-area: r;
+}
 
+.button_right img {
 }
 
 .button_left {
-    left: 4%;
-    bottom: 340px;
+    grid-area: l;
 }
 
+.button_left {
+}
 
 .settings_button {
     grid-area: settings;
