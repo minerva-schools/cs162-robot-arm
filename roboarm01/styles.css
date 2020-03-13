@@ -174,15 +174,15 @@ video {
     left: 5%;
     top: 80%;
     display: grid;
-    width: 150px;
-    height: 100px;
+    width: 156px;
+    height: 103px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
         "l t r"
         "l d r";
-    place-items: center center;
-
+    place-items: end center;
+    grid-gap: 3px;
 }
 
 .main_button {
@@ -196,8 +196,8 @@ video {
 
 .main_button img {
     height: 36px;
-    width: auto;
     padding: 9px 0px 0px 9px;
+    width: auto;
 }
 
 .main_button:hover {
