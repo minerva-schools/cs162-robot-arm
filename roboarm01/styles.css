@@ -7,6 +7,7 @@
     border: 0;
     margin: 0;
     padding: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
 }
@@ -24,7 +25,7 @@ a {
     width: 100vw;
     background-color: black;
     color: white;
-    grid-template-columns: 1fr 180px 1fr;
+    grid-template-columns: 1fr 220px 1fr;
     grid-template-rows: 1fr 5% 150px 5% 1fr 5%;
     grid-template-areas:
         ". . ."
@@ -54,30 +55,51 @@ a {
     position: relative;
     left: -15px;
     top: 25px;
+    -webkit-transform-origin: -3px -8px;
     transform-origin: -3px -8px;
+    -webkit-animation: spin 2s infinite ease;
     animation: spin 2s infinite ease;
 }
 
-@keyframes spin {
+@-webkit-keyframes spin {
     0% {
+        -webkit-transform: rotate(0deg);
         transform: rotate(0deg)
     }
 
     50% {
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg)
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    50% {
+        -webkit-transform: rotate(-90deg);
         transform: rotate(-90deg)
     }
 }
 
 .sign-in {
     grid-area: sign-in;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-pack: distribute;
     justify-content: space-around;
     width: 100%;
+    text-align: center;
 }
 
 .sign-in-buttons {
     color: inherit;
     border: 2px solid white;
+    min-width: 100px;
     border-radius: 15px;
     padding: 15px;
     background-color: var(--dark-grey);
@@ -88,6 +110,7 @@ a {
 }
 
 .sign-in-buttons:active {
+    -webkit-transform: scale(0.9);
     transform: scale(0.9);
 }
 
@@ -205,6 +228,7 @@ video {
 }
 
 .main_button:active {
+    -webkit-transform: scale(0.9);
     transform: scale(0.9);
 }
 
@@ -216,32 +240,27 @@ video {
     grid-area: d;
 }
 
-.button_down img {
-}
-
 .button_right {
     grid-area: r;
-}
-
-.button_right img {
 }
 
 .button_left {
     grid-area: l;
 }
 
-.button_left {
-}
-
 .settings_button {
     grid-area: settings;
     color: white;
     height: 5vh;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
     transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
 .settings_button:hover,
 .settings_button:active {
+    -webkit-transform: scale(1.2);
     transform: scale(1.2);
     cursor: pointer;
 }
@@ -257,8 +276,15 @@ video {
     top: 8%;
     right: 2%;
     z-index: 5;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
     align-items: flex-end;
 }
 
@@ -277,6 +303,7 @@ video {
 }
 
 .settings_dropdown_option:active {
+    -webkit-transform: scale(0.9);
     transform: scale(0.9);
 }
 
@@ -403,6 +430,7 @@ video {
 }
 
 .btn:active {
+    -webkit-transform: scale(0.95);
     transform: scale(0.95);
 }
 
@@ -415,6 +443,7 @@ video {
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
+    -webkit-transition: opacity .2s;
     transition: opacity .2s;
 }
 
@@ -430,6 +459,7 @@ video {
     top: 50%;
     width: 70vh;
     height: 10px;
+    -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
 }
 
@@ -454,6 +484,7 @@ video {
 
 .slider::-moz-range-thumb {
     -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     width: 30px;
     height: 30px;

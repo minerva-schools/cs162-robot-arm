@@ -20,7 +20,7 @@ $(document).ready(function () {
     });
 
 
-    // log-in form display
+    // upload-file form display
     $('.upload_button').click(function () {
         console.log("WORK !!!");
         $("#UploadFile").css({
@@ -133,6 +133,5 @@ $(document).ready(function () {
     });
 
     $('#myForm').validate();
-
 
 });
