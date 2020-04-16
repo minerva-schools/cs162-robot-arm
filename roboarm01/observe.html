@@ -20,12 +20,12 @@
 <body>
     <main class="recording rec_obs">
         <div class="title small_logo medium_logo">
-            <h3>RoboArm: observer mode</h3>
+                <h3>RoboArm: observer mode</h3>
         </div>
-        <button class="settings_button"><img src="cog.png" alt="settings icon"></button>
-        <div class="settings_dropdown">
-            <div class="settings_dropdown_option log_in_button">Log in</div>
+        <div>
+            <p class="sign-in-buttons log_in_button login_observe">Log in</p>
         </div>
+
         <div class="r_video">
             <video autoplay muted loop src="demo.mp4"></video>
         </div>
@@ -33,19 +33,19 @@
         <div class="credits">&copy; RoboArm Team 2020</div>
     </main>
     <div class="form-parent">
-    <div class="form-popup" id="myForm">
-        <form action="main.html" class="form-container">
-            <h1>Login</h1>
+        <div class="form-popup" id="myForm">
+            <form action="main.html" class="form-container">
+                <h1>Login</h1>
 
-            <label for="email"><b>Email</b></label>
-            <input type="email" placeholder="Enter Email" name="email" id="email" required>
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="email" id="email" required>
 
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
-            <button type="submit" class="btn">Login</button>
-            <button type="button" class="btn cancel">Close</button>
-        </form>
-    </div>
+                <button type="submit" class="btn">Login</button>
+                <button type="button" class="btn cancel">Close</button>
+            </form>
+        </div>
     </div>
 </body></html>
