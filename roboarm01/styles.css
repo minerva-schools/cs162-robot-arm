@@ -150,8 +150,7 @@ a {
     place-items: center center;
 }
 
-.
-.rec_obs {
+. .rec_obs {
     grid-template-columns: 1fr 10%;
     grid-template-rows: 10% 1fr 5%;
 }
