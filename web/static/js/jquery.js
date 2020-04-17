@@ -147,12 +147,12 @@ $(document).ready(function () {
             $('.slider1').css({
                 visibility: "hidden"
             });
-            controls = "buttons";
-        } else if (controls == "buttons") {
-            $('.main_buttons').addClass('main_buttons_alt');
-            controls = "buttons-alt";
-        } else {
-            $('.main_buttons').removeClass('.main_buttons_alt');
+            controls = "left_buttons";
+        } else if (controls == "left_buttons") {
+            $('.main_buttons').removeClass('left_buttons').addClass('right_buttons');
+            controls = "right_buttons";
+        } else if (controls == "right_buttons") {
+            $('.main_buttons').removeClass('right_buttons').addClass('left_buttons');
             $('.main_button').css({
                 visibility: "hidden"
             });
