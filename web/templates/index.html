@@ -1,10 +1,137 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <title>CS162 Final Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RoboArm Viewer</title>
+    <meta name="description" content="RoboArm | CS162 project">
+    <meta name="author" content="Mikulas Plesak">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_robo.css') }}">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+
 </head>
+
 <body>
-    <p>Hello World!</p>
+    <div class="landing">
+        <div class="title">
+            <h1>RoboArm</h1>
+        </div>
+        <div class="roboarm">
+            <img src="/static/anim-joint.png" alt="Animated robot arm joint">
+            <img class="anim-arm" src="/static/anim-arm.png" alt="Animated robot arm">
+        </div>
+        <div class="sign-in">
+            <div class="observe-button">
+                <p class="sign-in-buttons" onClick="window.location.href = '{{ url_for('observe') }}'">Observe!</p>
+                <span class="mouseovert_text">Observe Mode allows you to see and observe the robot live; however, you cannot control it since all the controling tools will be disabled for you unless you log-in. </span>
+            </div>
+            <div>
+                <p class="sign-in-buttons register_button">Register!</p>
+            </div>
+            <div class="signin-button">
+                <p class="sign-in-buttons log_in_button">Log in!</p>
+                <span class="mouseovert_text_sign_in"> If you are Minerva student you can log-in into the system and while observing the robot you can also control it using contollers or by uploading your own code. </span>
+            </div>
+
+
+        </div>
+        <div class="credits">&copy; RoboArm Team 2020</div>
+    </div>
+
+    {% if error_register %}
+    <div class="form-parent-register show">
+      <div class="form-popup-register" id="myFormRegisterError">
+    {% else %}
+    <div class="form-parent-register">
+      <div class="form-popup-register" id="myFormRegister">
+    {% endif %}
+
+          <form method="POST" action="/register" class="form-container">
+              <!-- <h2 class="text-center"><strong>Create</strong> an account.</h2> -->
+              <h1>Register</h1>
+              {% if error_register %}
+              <h3>{{ error_register }}</h3>
+              {% endif %}
+              <label for="username"><b>Username</b></label>
+              <input type="text" name="username" placeholder="Enter A Username" id="username" required>
+
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="password" id="psw" required>
+
+              <label for="re-psw"><b>Repeat password</b></label>
+              <input type="password" placeholder="Repeat password" name="repeat" id="re-psw" required>
+
+              <button type="submit" class="btn">Register</button>
+              <button type="button" class="btn cancel">Close</button>
+
+              <!-- <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Enter A Username" required></div>
+              <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" required></div>
+              <div class="form-group"><input class="form-control" type="password" name="repeat" placeholder="Password (repeat)" required></div>
+              <div class="form-group"><button class="btn btn-primary btn-block" type="submit" value="Register">Sign Up</button>
+              </div><a class="already" href="http://127.0.0.1:5000/login">You already have an account? Login here.</a> -->
+          </form>
+
+          <!-- <form action="main.html" class="form-container">
+              <h1>Login</h1>
+
+              <label for="email"><b>Email</b></label>
+              <input type="email" placeholder="Enter Email" name="email" id="email" required>
+
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+              <button type="submit" class="btn">Login</button>
+              <button type="button" class="btn cancel">Close</button>
+          </form> -->
+      </div>
+    </div>
+
+    {% if message %}
+    <div class="form-parent show">
+      <div class="form-popup" id="myFormMessage">
+    {% else %}
+    <div class="form-parent">
+      <div class="form-popup" id="myForm">
+    {% endif %}
+
+
+          <form action="/login" method="POST" class="form-container">
+              {% if message %}
+              <h3>{{ message }}</h3>
+              {% endif %}
+              <h1>Login</h1>
+              <label for="username"><b>Username</b></label>
+              <input type="text" name="username" placeholder="Enter A Username" id="username" required>
+
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="password" id="psw" required>
+              <!--
+              <label for="email"><b>Email</b></label>
+              <input type="email" placeholder="Enter Email" name="email" id="email" required>
+
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="psw" id="psw" required> -->
+
+              <button type="submit" class="btn">Login</button>
+              <button type="button" class="btn cancel">Close</button>
+          </form>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- <script src="jquery.js"></script> -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+
 </body>
+
 </html>

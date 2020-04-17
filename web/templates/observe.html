@@ -9,21 +9,22 @@
     <title>RoboArm Viewer</title>
     <meta name="description" content="RoboArm | CS162 project">
     <meta name="author" content="Mikulas Plesak">
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_robo.css') }}">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-    <script src="jquery.js"></script>
+    <!-- <script src="jquery.js"></script> -->
 </head>
 
 <body>
     <main class="recording rec_obs">
         <div class="title small_logo medium_logo">
-                <h3>RoboArm: observer mode</h3>
+                <a href="{{ url_for('welcome') }}"><h3>RoboArm: observer mode</h3></a>
         </div>
         <div>
-            <p class="sign-in-buttons log_in_button">Log in!</p>
+            <p class="sign-in-buttons log_in_button">Log in</p>
         </div>
 
         <div class="r_video">
@@ -34,7 +35,7 @@
     </main>
     <div class="form-parent">
         <div class="form-popup" id="myForm">
-            <form action="main.html" class="form-container">
+            <form action="main.html" method="POST" class="form-container">
                 <h1>Login</h1>
 
                 <label for="email"><b>Email</b></label>
@@ -48,4 +49,5 @@
             </form>
         </div>
     </div>
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 </body></html>
