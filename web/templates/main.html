@@ -20,7 +20,9 @@
 <body>
     <main class="recording">
         <div class="title small_logo">
-                <a href="{{ url_for('welcome') }}"><h3>RoboArm</h3></a>
+                <a href="{{ url_for('welcome') }}">
+                  <h3>RoboArm</h3>
+                </a>
         </div>
         <button class="settings_button"><img src="static/cog.png" alt="settings icon"></button>
         <div class="settings_dropdown">
@@ -71,4 +73,6 @@
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
-</body></html>
+</body>
+
+</html>

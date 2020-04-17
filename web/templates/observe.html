@@ -24,7 +24,7 @@
                 <a href="{{ url_for('welcome') }}"><h3>RoboArm: observer mode</h3></a>
         </div>
         <div>
-            <p class="sign-in-buttons log_in_button login_observe">Log in</p>
+            <p class="sign-in-buttons log_in_button">Log in</p>
         </div>
 
         <div class="r_video">
@@ -35,7 +35,7 @@
     </main>
     <div class="form-parent">
         <div class="form-popup" id="myForm">
-            <form action="main.html" class="form-container">
+            <form action="main.html" method="POST" class="form-container">
                 <h1>Login</h1>
 
                 <label for="email"><b>Email</b></label>

@@ -1,6 +1,12 @@
 $(document).ready(function () {
 
     // log-in form display
+    // TEMPORARY login form redirect fix
+    // $('.form-container').submit(function(e) {
+    //     e.preventDefault();
+    //     window.location.href = 'main.html';
+    // });
+
     $('.register_button').click(function () {
         console.log("WORK !!!");
         $("#myFormRegister").css({
@@ -10,7 +16,7 @@ $(document).ready(function () {
             visibility: "visible"
         });
     });
-    
+
     $('.log_in_button').click(function () {
         console.log("WORK !!!");
         $("#myForm").css({
