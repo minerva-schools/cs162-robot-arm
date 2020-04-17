@@ -23,7 +23,7 @@ a {
     display: grid;
     height: 100vh;
     width: 100vw;
-    background-color: black;
+    background-color: yellow;
     color: white;
     grid-template-columns: 1fr 220px 1fr;
     grid-template-rows: 1fr 5% 150px 5% 1fr 5%;
