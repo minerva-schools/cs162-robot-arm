@@ -148,7 +148,11 @@ $(document).ready(function () {
                 visibility: "hidden"
             });
             controls = "buttons";
+        } else if (controls == "buttons") {
+            $('.main_buttons').addClass('main_buttons_alt');
+            controls = "buttons-alt";
         } else {
+            $('.main_buttons').removeClass('.main_buttons_alt');
             $('.main_button').css({
                 visibility: "hidden"
             });

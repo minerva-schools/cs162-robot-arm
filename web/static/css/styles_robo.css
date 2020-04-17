@@ -208,6 +208,10 @@ video {
     grid-gap: 3px;
 }
 
+.main_buttons_alt {
+    left: 75%;
+}
+
 .main_button {
     color: inherit;
     border: 2px solid white;
