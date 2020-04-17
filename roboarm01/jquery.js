@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    // TEMPORARY login form redirect fix
     $('.form-container').submit(function(e) {
         e.preventDefault();
         window.location.href = 'main.html';
