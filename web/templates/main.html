@@ -9,19 +9,20 @@
     <title>RoboArm Viewer</title>
     <meta name="description" content="RoboArm | CS162 project">
     <meta name="author" content="Mikulas Plesak">
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_robo.css') }}">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="jquery.js"></script>
+    <!-- <script src="jquery.js"></script> -->
 </head>
 
 <body>
     <main class="recording">
         <div class="title small_logo">
-                <h3>RoboArm</h3>
+                <a href="{{ url_for('welcome') }}"><h3>RoboArm</h3></a>
         </div>
-        <button class="settings_button"><img src="cog.png" alt="settings icon"></button>
+        <button class="settings_button"><img src="static/cog.png" alt="settings icon"></button>
         <div class="settings_dropdown">
             <a class="settings_dropdown_option change_controls">
                 <div>Change controls</div>
@@ -29,18 +30,18 @@
             <a class="settings_dropdown_option upload_button">
                 <div>Upload a code file</div>
             </a>
-            <a href="index.html" class="settings_dropdown_option">
+            <a href="{{ url_for('welcome') }}" class="settings_dropdown_option">
                 <div>Log out</div>
             </a>
         </div>
 
         <div class="r_video">
-            <video autoplay muted loop src="demo.mp4"></video>
+            <video autoplay muted loop src="static/demo.mp4"></video>
             <div class="main_buttons">
-                <div class="main_button button_top"><img src="a_t.png" alt="arrow up"></div>
-                <div class="main_button button_right"><img src="a_r.png" alt="arrow right"></div>
-                <div class="main_button button_down"><img src="a_d.png" alt="arrow down"></div>
-                <div class="main_button button_left"><img src="a_l.png" alt="arrow left"></div>
+                <div class="main_button button_top"><img src="static/a_t.png" alt="arrow up"></div>
+                <div class="main_button button_right"><img src="static/a_r.png" alt="arrow right"></div>
+                <div class="main_button button_down"><img src="static/a_d.png" alt="arrow down"></div>
+                <div class="main_button button_left"><img src="static/a_l.png" alt="arrow left"></div>
             </div>
             <input type="range" min="1" max="100" value="50" class="slider slider_ver" id="RightLeft">
             <input type="range" min="1" max="100" value="50" class="slider slider_hor" id="UpDown">
@@ -50,8 +51,8 @@
     </main>
     <div class="loader">
         <div class="roboarm loader_arm">
-            <img src="anim-joint.png" alt="Animated robot arm joint">
-            <img class="anim-arm" src="anim-arm.png" alt="Animated robot arm">
+            <img src="static/anim-joint.png" alt="Animated robot arm joint">
+            <img class="anim-arm" src="static/anim-arm.png" alt="Animated robot arm">
         </div>
         <p class="loader_text">Logging you in...</p>
         <progress class="loader_bar" id="loader_bar" value="0" max="100"></progress>
@@ -69,4 +70,5 @@
             </form>
         </div>
     </div>
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 </body></html>

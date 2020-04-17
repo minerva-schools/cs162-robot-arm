@@ -1,6 +1,16 @@
 $(document).ready(function () {
 
     // log-in form display
+    $('.register_button').click(function () {
+        console.log("WORK !!!");
+        $("#myFormRegister").css({
+            display: "block"
+        });
+        $('.form-parent-register').css({
+            visibility: "visible"
+        });
+    });
+    
     $('.log_in_button').click(function () {
         console.log("WORK !!!");
         $("#myForm").css({
@@ -10,11 +20,23 @@ $(document).ready(function () {
             visibility: "visible"
         });
     });
+
+
+
     $('.cancel').click(function () {
         $("#myForm").css({
             display: "none"
         });
         $('.form-parent').css({
+            visibility: "hidden"
+        });
+    });
+
+    $('.cancel').click(function () {
+        $("#myFormRegister").css({
+            display: "none"
+        });
+        $('.form-parent-register').css({
             visibility: "hidden"
         });
     });

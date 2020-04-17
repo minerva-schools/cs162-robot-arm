@@ -52,6 +52,11 @@ def welcome():
     # return redirect('login')
     return render_template('index.html')
 
+@app.route('/observe')
+def observe():
+    return render_template('observe.html')
+
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
