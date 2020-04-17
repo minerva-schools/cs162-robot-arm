@@ -141,8 +141,8 @@ a {
     width: 100vw;
     background-color: black;
     color: white;
-    grid-template-columns: 1fr 15%;
-    grid-template-rows: 10% 1fr 5%;
+    grid-template-columns: 1fr 100px;
+    grid-template-rows: 8% 1fr 5%;
     grid-template-areas:
         "title settings"
         "video video"
@@ -150,7 +150,7 @@ a {
     place-items: center center;
 }
 
-. .rec_obs {
+.rec_obs {
     grid-template-columns: 1fr 10%;
     grid-template-rows: 10% 1fr 5%;
 }
@@ -358,8 +358,41 @@ video {
     border-radius: 5px;
 }
 
+
 /* The popup login form - hidden by default */
+.form-register {
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    z-index: 3;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "form";
+    place-items: center center;
+}
+
 .form-parent {
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    z-index: 3;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "form";
+    place-items: center center;
+}
+
+.form-parent-register {
     position: absolute;
     visibility: hidden;
     top: 0;
@@ -392,7 +425,8 @@ video {
 }
 
 .form-container input[type=email],
-.form-container input[type=password] {
+.form-container input[type=password],
+.form-container input[type=text] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -401,7 +435,8 @@ video {
 }
 
 .form-container input[type=email]:focus,
-.form-container input[type=password]:focus {
+.form-container input[type=password]:focus,
+.form-container input[type=text]:focus {
     background-color: white;
     outline: none;
 }
@@ -418,6 +453,17 @@ video {
 
 .form-container .cancel {
     background-color: var(--dark-grey);
+}
+
+/* Show popup if there is error */
+.show {
+  visibility: visible;
+}
+#myFormRegisterError {
+  display: block;
+}
+#myFormMessage {
+  display: block;
 }
 
 .file_upload {

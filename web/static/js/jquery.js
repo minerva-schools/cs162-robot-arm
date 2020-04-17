@@ -1,12 +1,22 @@
 $(document).ready(function () {
 
+    // log-in form display
     // TEMPORARY login form redirect fix
-    $('.form-container').submit(function(e) {
-        e.preventDefault();
-        window.location.href = 'main.html';
+    // $('.form-container').submit(function(e) {
+    //     e.preventDefault();
+    //     window.location.href = 'main.html';
+    // });
+
+    $('.register_button').click(function () {
+        console.log("WORK !!!");
+        $("#myFormRegister").css({
+            display: "block"
+        });
+        $('.form-parent-register').css({
+            visibility: "visible"
+        });
     });
 
-    // log-in form display
     $('.log_in_button').click(function () {
         console.log("WORK !!!");
         $("#myForm").css({
@@ -16,11 +26,25 @@ $(document).ready(function () {
             visibility: "visible"
         });
     });
+
+
+
     $('.cancel').click(function () {
         $("#myForm").css({
             display: "none"
         });
         $('.form-parent').css({
+            visibility: "hidden"
+        });
+
+        $('.login_message').remove();
+    });
+
+    $('.cancel').click(function () {
+        $("#myFormRegister").css({
+            display: "none"
+        });
+        $('.form-parent-register').css({
             visibility: "hidden"
         });
     });
