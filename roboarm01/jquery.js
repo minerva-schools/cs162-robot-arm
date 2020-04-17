@@ -1,5 +1,10 @@
 $(document).ready(function () {
 
+    $('.form-container').submit(function(e) {
+        e.preventDefault();
+        window.location.href = 'main.html';
+    });
+
     // log-in form display
     $('.log_in_button').click(function () {
         console.log("WORK !!!");
@@ -41,9 +46,9 @@ $(document).ready(function () {
 
     // toggle the settings dropdown
     $('.settings_button').click(function () {
-        console.log("FUNCTION CALLED!");
+        // console.log("FUNCTION CALLED!");
         if ($('.settings_dropdown').css("visibility") == "hidden") {
-            console.log("SHOWING");
+            // console.log("SHOWING");
             $('.settings_dropdown').css({
                 visibility: 'visible',
                 opacity: 0
@@ -51,7 +56,7 @@ $(document).ready(function () {
                 opacity: 1
             }, 300);
         } else {
-            console.log("HIDING!");
+            // console.log("HIDING!");
             $('.settings_dropdown').css({
                 opacity: 1
             }).animate({
