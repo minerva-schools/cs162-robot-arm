@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+    // TEMPORARY login form redirect fix
+    $('.form-container').submit(function(e) {
+        e.preventDefault();
+        window.location.href = 'main.html';
+    });
+
     // log-in form display
     $('.log_in_button').click(function () {
         console.log("WORK !!!");
