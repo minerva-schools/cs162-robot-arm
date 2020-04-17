@@ -504,3 +504,37 @@ video {
     background: var(--dark-grey);
     cursor: pointer;
 }
+
+.mouseovert_text{
+  visibility: hidden;
+  width: 210px;
+  background-color: white;
+  color: grey;
+  text-align: center;
+  border-radius: 6px;
+  margin: 15px -50px;
+  padding:10px 10px;
+  position: absolute;
+  z-index: 18;
+}
+
+.mouseovert_text_sign_in{
+  visibility: hidden;
+  width: 210px;
+  background-color: white;
+  color: grey;
+  text-align: center;
+  border-radius: 6px;
+  margin: 15px -160px;
+  padding:10px 10px;
+  position: absolute;
+  z-index: 18;
+}
+
+.observe-button:hover .mouseovert_text {
+  visibility: visible;
+}
+
+.signin-button:hover .mouseovert_text_sign_in {
+  visibility: visible;
+}
