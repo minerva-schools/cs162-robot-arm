@@ -208,9 +208,14 @@ video {
     grid-gap: 3px;
 }
 
-.main_buttons_alt {
+.left_buttons {
+    left: 5%;
+}
+
+.right_buttons {
     left: 75%;
 }
+
 
 .main_button {
     color: inherit;
