@@ -104,7 +104,9 @@
 
           <form action="/login" method="POST" class="form-container">
               {% if message %}
-              <h3>{{ message }}</h3>
+              <div class="login_message">
+                <h3>{{ message }}</h3>
+              </div>
               {% endif %}
               <h1>Login</h1>
               <label for="username"><b>Username</b></label>

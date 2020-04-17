@@ -36,6 +36,8 @@ $(document).ready(function () {
         $('.form-parent').css({
             visibility: "hidden"
         });
+
+        $('.login_message').remove();
     });
 
     $('.cancel').click(function () {
