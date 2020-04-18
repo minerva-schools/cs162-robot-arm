@@ -56,6 +56,10 @@ def welcome():
 def observe():
     return render_template('observe.html')
 
+@app.route('/help')
+def help():
+    return render_template("help.html")
+
 
 @login.user_loader
 def load_user(id):
