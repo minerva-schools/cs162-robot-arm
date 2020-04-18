@@ -28,7 +28,7 @@ a {
     grid-template-columns: 1fr 220px 1fr;
     grid-template-rows: 1fr 5% 150px 5% 1fr 5%;
     grid-template-areas:
-        ". . ."
+        ". . help"
         ". title ."
         ". roboarm ."
         ". sign-in ."
@@ -85,6 +85,22 @@ a {
     }
 }
 
+.help_icon {
+    width: 30px;
+    height: 30px;
+}
+
+.help_icon:hover {
+    cursor: pointer;
+}
+
+.help{
+    grid-area: help;
+    place-self: start end;
+    padding: 10px 10px;
+    margin-top:  0px;
+}
+
 .sign-in {
     grid-area: sign-in;
     display: -webkit-box;
@@ -104,6 +120,7 @@ a {
     padding: 15px;
     background-color: var(--dark-grey);
 }
+
 
 .sign-in-buttons:hover {
     cursor: pointer;
@@ -166,6 +183,15 @@ a {
 }
 
 .r_video {
+    grid-area: video;
+    border: 3px solid white;
+    height: 95%;
+    width: 95%;
+    background-color: var(--dark-grey);
+    border-radius: 20px;
+}
+
+.tutorial {
     grid-area: video;
     border: 3px solid white;
     height: 95%;
