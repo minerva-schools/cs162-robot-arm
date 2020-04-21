@@ -187,7 +187,7 @@ a {
     border: 3px solid white;
     height: 95%;
     width: 95%;
-    background-color: var(--dark-grey);
+    background-color: black;
     border-radius: 20px;
 }
 
@@ -209,6 +209,14 @@ video {
     z-index: 0;
     background-size: cover;
     overflow: hidden;
+}
+
+#kaltura_player_1587453207 {
+    position: relative;
+    top: 2%;
+    left: 2%;
+    height: 96%;
+    width: 96%;
 }
 
 .buttons {
