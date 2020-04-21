@@ -5,7 +5,7 @@ from flask import Flask, render_template, redirect, request, g, session #Main Fl
 from flask_login import LoginManager, UserMixin, current_user, login_user, login_required, logout_user #To create the Login
 from flask_sqlalchemy import SQLAlchemy #SQL Alchemy to create the database
 import sys
-
+from werkzeug.security import generate_password_hash, check_password_hash
 #Creating the primary database
 class User(UserMixin, db.Model): # A table to store users data
     __tablename__ = 'User'
@@ -51,20 +51,23 @@ This function returns an error if the username already exists in the database
 """
 @app.route('/register', methods=['GET','POST'])
 def register():
-    print('hello',file=sys.stdout)
     if request.method == 'POST':
-        user = User.query.filter_by(username=request.form['username']).first()
+        username = request.form['username']
+        password = request.form['password']
+        repeat = request.form['repeat']
+        user = User.query.filter_by(username=username).first()
         if user is not None:
             error = 'This username already exists! please choose a new username'
             return render_template('index.html', error_register=error)
-        if len(request.form['password']) < 8:
+        if len(password) < 8:
             error = 'Your password should be at least 8 symbols long. Please, try again.'
             return render_template('index.html', error_register=error)
-        if request.form['password'] != request.form['repeat']:
+        if password != repeat:
             error = 'Passwords do not match. Please, try again.'
             return render_template('index.html', error_register=error)
 
-        new_user = User(username=request.form['username'], password=request.form['password'])
+        # store user information, with password hashed
+        new_user = User(username=username, password=generate_password_hash(password, method='sha256'))
         db.session.add(new_user)
         db.session.commit()
         register_success_message = 'Registered successful. Please log in'
@@ -81,8 +84,12 @@ If the user is not registered it displays an error that the user is not register
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        user = User.query.filter_by(username=request.form['username'], password=request.form['password']).first()
-        if user is None:
+        username = request.form['username']
+        password = request.form['password']
+        user = User.query.filter_by(username=username).first()
+        # check if the user exists
+        # Take the password, hash it, and compare it with the hashed password in the database
+        if not user or not check_password_hash(user.password, password):
             error = 'The password or the username you entered is not correct!'
             return render_template('index.html', message=error)
         login_user(user)
@@ -103,7 +110,6 @@ def logout():
 """
 This is the primary function responsible for displaying the tasks
 This function does not allow duplicate tasks to exist
-
 """
 @app.route('/main', methods=["GET", "POST"])
 @login_required
