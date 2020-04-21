@@ -1,7 +1,7 @@
 #Importing All the needed libraries
 import os #To handle files path
 from flask import Flask, render_template, redirect, request, g, session #Main Flask
-from flask_login import LoginManager, UserMixin, current_user, login_user, login_required #To create the Login
+from flask_login import LoginManager, UserMixin, current_user, login_user, login_required, logout_user #To create the Login
 from flask_sqlalchemy import SQLAlchemy #SQL Alchemy to create the database
 import sys
 #Initial Configurations
@@ -17,21 +17,11 @@ login.login_view = 'login'
 db = SQLAlchemy(app)
 
 #Creating the primary database
-class Task(db.Model): # A table to store all the tasks with a unique id as an identifier
-    __tablename__ = 'Task'
-    id = db.Column(db.Integer,primary_key=True)
-    title = db.Column(db.String(80), unique=True, nullable=False, primary_key=True)
-    status = db.Column(db.String(80), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
-    def __repr__(self):
-        return "<Title: {}>".format(self.title)
-
 class User(UserMixin, db.Model): # A table to store users data
     __tablename__ = 'User'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(200))
     password = db.Column(db.String(200))
-    task_id = db.relationship('Task', backref='user', lazy='dynamic') #Creating the relation between the two databases
     def __repr__(self):
         return "<Username: {}>".format(self.username)
 
@@ -47,9 +37,6 @@ This function redirects users to the Login page
 """
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
-    # return render_template('index2.html')
-    # return redirect('index2')
-    # return redirect('login')
     return render_template('index.html')
 
 @app.route('/observe')
@@ -109,7 +96,8 @@ def login():
             error = 'The password or the username you entered is not correct!'
             return render_template('index.html', message=error)
         login_user(user)
-        return render_template('main.html')
+        return redirect('/main')
+        # return render_template('main.html')
     elif request.method == 'GET':
         return render_template('index.html')
 
@@ -117,8 +105,9 @@ def login():
 This function is responsible for logging users out
 """
 @app.route('/logout', methods=['GET', 'POST'])
+@login_required
 def logout():
-    session.pop('logged_in', None)
+    logout_user()
     return redirect('login')
 
 """
@@ -130,47 +119,7 @@ This function does not allow duplicate tasks to exist
 @login_required
 def home():
     g.user = current_user
-    tasks = None
-    error = None
-    if request.form:
-        try:
-            if request.form.get("title") in [task.title for task in Task.query.all()]:
-                error = "This task already exists."
-            else:
-                task = Task(id = 1, title=request.form.get("title"), status=request.form.get("status"), user_id = g.user.id)
-                tasks = Task.query.all()
-                db.session.add(task)
-                db.session.commit()
-        except Exception as e:
-            print("Failed to add task")
-            print(e)
-    tasks = Task.query.filter_by(user_id=g.user.id).all()
-    todo = Task.query.filter_by(status='todo',user_id=g.user.id).all()
-    doing = Task.query.filter_by(status='doing',user_id=g.user.id).all()
-    done = Task.query.filter_by(status='done',user_id=g.user.id).all()
-    return render_template("index.html", error=error, tasks=tasks, todo=todo, doing=doing, done=done, myuser=current_user)
-
-@app.route("/update", methods=["POST"])
-def update():
-    try:
-        newstatus = request.form.get("newstatus")
-        name = request.form.get("name")
-        task = Task.query.filter_by(title=name).first()
-        task.status = newstatus
-        db.session.commit()
-    except Exception as e:
-        print("Couldn't update task status")
-        print(e)
-    return redirect("/main")
-
-@app.route("/delete", methods=["POST"])
-def delete():
-    title = request.form.get("title")
-    task = Task.query.filter_by(title=title).first()
-    db.session.delete(task)
-    db.session.commit()
-    return redirect("/main")
-
+    return render_template("main.html", myuser=current_user)
 
 #Running the application
 if __name__ == "__main__":
