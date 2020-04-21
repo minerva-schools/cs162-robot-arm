@@ -28,26 +28,49 @@
         </div>
 
         <div class="r_video">
-            <video autoplay muted loop src="static/videos/demo.mp4"></video>
+            <div id="kaltura_player_1587453207"></div>
         </div>
 
         <div class="credits">&copy; RoboArm Team 2020</div>
     </main>
+    {% if message %}
+    <div class="form-parent show">
+        <div class="form-popup" id="myFormMessage">
+    {% else %}
     <div class="form-parent">
         <div class="form-popup" id="myForm">
-            <form action="main.html" method="POST" class="form-container">
+    {% endif %}
+            <form action="/login" method="POST" class="form-container">
+                {% if message %}
+                <div class="login_message">
+                    <h3>{{ message }}</h3>
+                </div>
+                {% endif %}
                 <h1>Login</h1>
-
-                <label for="email"><b>Email</b></label>
-                <input type="email" placeholder="Enter Email" name="email" id="email" required>
+                <label for="username"><b>Username</b></label>
+                <input type="text" name="username" placeholder="Enter A Username" id="username" required>
 
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                <input type="password" placeholder="Enter Password" name="password" id="psw" required>
 
                 <button type="submit" class="btn">Login</button>
                 <button type="button" class="btn cancel">Close</button>
+                <div class="register_button from_login">
+                  <p>Don't have an account? Register now</p>
+                </div>
             </form>
-        </div>
-    </div>
+          </div>
+      </div>
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="https://cdnapisec.kaltura.com/p/2763741/sp/276374100/embedIframeJs/uiconf_id/45509061/partner_id/2763741"></script>
+    <script>
+kWidget.embed({
+  "targetId": "kaltura_player_1587453207",
+  "wid": "_2763741",
+  "uiconf_id": 45509061,
+  "flashvars": {},
+  "cache_st": 1587453207,
+  "entry_id": "1_k8b67b1m"
+});
+</script>
 </body></html>

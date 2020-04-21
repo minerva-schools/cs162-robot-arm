@@ -101,6 +101,10 @@ a {
     margin-top:  0px;
 }
 
+.from_login:hover {
+  cursor: pointer;
+}
+
 .sign-in {
     grid-area: sign-in;
     display: -webkit-box;
@@ -158,13 +162,17 @@ a {
     width: 100vw;
     background-color: black;
     color: white;
-    grid-template-columns: 1fr 100px;
+    grid-template-columns: 1fr 20%;
     grid-template-rows: 8% 1fr 5%;
     grid-template-areas:
         "title settings"
-        "video video"
+        "video controlers"
         "credits credits";
     place-items: center center;
+}
+
+.controlers{
+    grid-area: controlers;
 }
 
 .rec_obs {
@@ -187,7 +195,7 @@ a {
     border: 3px solid white;
     height: 95%;
     width: 95%;
-    background-color: var(--dark-grey);
+    background-color: black;
     border-radius: 20px;
 }
 
@@ -209,6 +217,14 @@ video {
     z-index: 0;
     background-size: cover;
     overflow: hidden;
+}
+
+#kaltura_player_1587453207 {
+    position: relative;
+    top: 2%;
+    left: 2%;
+    height: 96%;
+    width: 96%;
 }
 
 .buttons {
@@ -618,4 +634,13 @@ video {
 
 .signin-button:hover .mouseovert_text_sign_in {
   visibility: visible;
+}
+
+.armform{
+    height: 200px;
+    width: 300px;
+}
+
+.form-table{
+    width: 60px;
 }
