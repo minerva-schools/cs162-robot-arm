@@ -17,21 +17,11 @@ login.login_view = 'login'
 db = SQLAlchemy(app)
 
 #Creating the primary database
-class Task(db.Model): # A table to store all the tasks with a unique id as an identifier
-    __tablename__ = 'Task'
-    id = db.Column(db.Integer,primary_key=True)
-    title = db.Column(db.String(80), unique=True, nullable=False, primary_key=True)
-    status = db.Column(db.String(80), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
-    def __repr__(self):
-        return "<Title: {}>".format(self.title)
-
 class User(UserMixin, db.Model): # A table to store users data
     __tablename__ = 'User'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(200))
     password = db.Column(db.String(200))
-    task_id = db.relationship('Task', backref='user', lazy='dynamic') #Creating the relation between the two databases
     def __repr__(self):
         return "<Username: {}>".format(self.username)
 
@@ -47,9 +37,6 @@ This function redirects users to the Login page
 """
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
-    # return render_template('index2.html')
-    # return redirect('index2')
-    # return redirect('login')
     return render_template('index.html')
 
 @app.route('/observe')
@@ -133,28 +120,6 @@ This function does not allow duplicate tasks to exist
 def home():
     g.user = current_user
     return render_template("main.html", myuser=current_user)
-
-@app.route("/update", methods=["POST"])
-def update():
-    try:
-        newstatus = request.form.get("newstatus")
-        name = request.form.get("name")
-        task = Task.query.filter_by(title=name).first()
-        task.status = newstatus
-        db.session.commit()
-    except Exception as e:
-        print("Couldn't update task status")
-        print(e)
-    return redirect("/main")
-
-@app.route("/delete", methods=["POST"])
-def delete():
-    title = request.form.get("title")
-    task = Task.query.filter_by(title=title).first()
-    db.session.delete(task)
-    db.session.commit()
-    return redirect("/main")
-
 
 #Running the application
 if __name__ == "__main__":
