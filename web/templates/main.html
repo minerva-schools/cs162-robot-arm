@@ -38,7 +38,7 @@
         </div>
 
         <div class="r_video">
-            <video autoplay muted loop src="static/demo.mp4"></video>
+            <div id="kaltura_player_1587453207"></div>
             <!--<div class="main_buttons left_buttons">
                 <div class="main_button button_top"><img src="static/images/a_t.png" alt="arrow up"></div>
                 <div class="main_button button_right"><img src="static/images/a_r.png" alt="arrow right"></div>
@@ -91,6 +91,17 @@
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="https://cdnapisec.kaltura.com/p/2763741/sp/276374100/embedIframeJs/uiconf_id/45509061/partner_id/2763741"></script>
+    <script>
+kWidget.embed({
+  "targetId": "kaltura_player_1587453207",
+  "wid": "_2763741",
+  "uiconf_id": 45509061,
+  "flashvars": {},
+  "cache_st": 1587453207,
+  "entry_id": "1_k8b67b1m"
+});
+</script>
 </body>
 
 </html>
