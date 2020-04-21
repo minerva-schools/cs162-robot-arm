@@ -39,14 +39,34 @@
 
         <div class="r_video">
             <video autoplay muted loop src="static/demo.mp4"></video>
-            <div class="main_buttons left_buttons">
+            <!--<div class="main_buttons left_buttons">
                 <div class="main_button button_top"><img src="static/images/a_t.png" alt="arrow up"></div>
                 <div class="main_button button_right"><img src="static/images/a_r.png" alt="arrow right"></div>
                 <div class="main_button button_down"><img src="static/images/a_d.png" alt="arrow down"></div>
                 <div class="main_button button_left"><img src="static/images/a_l.png" alt="arrow left"></div>
-            </div>
+            </div>-
             <input type="range" min="1" max="100" value="50" class="slider slider_ver" id="RightLeft">
-            <input type="range" min="1" max="100" value="50" class="slider slider_hor" id="UpDown">
+            <input type="range" min="1" max="100" value="50" class="slider slider_hor" id="UpDown"> -->
+
+            <div class="changes">
+            <img class = "armform" src="static/images/armform.png">
+            <form action="#"><br>
+                <p> Angles </p>
+                <input type="number" class="form-table" id="fname" name="fname" placeholder="Joint 1">
+                <input type="number" class="form-table" id="fname" name="fname" placeholder="Joint 2">
+                <input type="number" class="form-table" id="fname" name="fname" placeholder="Joint 3">
+                <input type="number" class="form-table" id="fname" name="fname" placeholder="Grip">
+                <br>
+                <p>Coordinates </p>
+                <input type="number" class="form-table" id="fname" name="fname" placeholder="X">
+                <input type="number" class="form-table" id="fname" name="fname" placeholder="Y">
+                <input type="number" class="form-table" id="fname" name="fname" placeholder="Z">
+                <input type="number" class="form-table" id="fname" name="fname" placeholder="Grip">
+                <br>
+                <input type="submit" value="Submit">
+            </form> </div>
+
+
         </div>
 
         <div class="credits">&copy; RoboArm Team 2020</div>
