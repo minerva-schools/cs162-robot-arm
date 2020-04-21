@@ -1,12 +1,24 @@
+function cancel_register() {
+  $("#myFormRegister").css({
+      display: "none"
+  });
+  $('.form-parent-register').css({
+      visibility: "hidden"
+  });
+}
+
+function cancel_login() {
+  $("#myForm").css({
+      display: "none"
+  });
+  $('.form-parent').css({
+      visibility: "hidden"
+  });
+
+  $('.login_message').remove();
+}
+
 $(document).ready(function () {
-
-    // log-in form display
-    // TEMPORARY login form redirect fix
-    // $('.form-container').submit(function(e) {
-    //     e.preventDefault();
-    //     window.location.href = 'main.html';
-    // });
-
     $('.register_button').click(function () {
         console.log("WORK !!!");
         $("#myFormRegister").css({
@@ -27,27 +39,17 @@ $(document).ready(function () {
         });
     });
 
+    $('.from_login').click(
+      cancel_login
+    );
 
+    $('.cancel').click(
+      cancel_login
+    );
 
-    $('.cancel').click(function () {
-        $("#myForm").css({
-            display: "none"
-        });
-        $('.form-parent').css({
-            visibility: "hidden"
-        });
-
-        $('.login_message').remove();
-    });
-
-    $('.cancel').click(function () {
-        $("#myFormRegister").css({
-            display: "none"
-        });
-        $('.form-parent-register').css({
-            visibility: "hidden"
-        });
-    });
+    $('.cancel').click(
+      cancel_register
+    );
 
 
     // upload-file form display
