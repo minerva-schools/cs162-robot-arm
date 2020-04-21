@@ -101,6 +101,10 @@ a {
     margin-top:  0px;
 }
 
+.from_login:hover {
+  cursor: pointer;
+}
+
 .sign-in {
     grid-area: sign-in;
     display: -webkit-box;
