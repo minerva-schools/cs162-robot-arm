@@ -1,0 +1,12 @@
+<script src="https://cdnapisec.kaltura.com/p/2763741/sp/276374100/embedIframeJs/uiconf_id/45509061/partner_id/2763741"></script>
+<div id="kaltura_player_1587453207" style="width: 560px; height: 395px;"></div>
+<script>
+kWidget.embed({
+  "targetId": "kaltura_player_1587453207",
+  "wid": "_2763741",
+  "uiconf_id": 45509061,
+  "flashvars": {},
+  "cache_st": 1587453207,
+  "entry_id": "1_k8b67b1m"
+});
+</script>
