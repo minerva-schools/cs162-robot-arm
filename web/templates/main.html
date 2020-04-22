@@ -51,7 +51,7 @@
 
         <div class="controllers">
             <h2 class="c_title">Control room</h2>
-            <img class = "c_armform" src="static/images/armform.png">
+            <!--<img class = "c_armform" src="static/images/armform.png"> -->
             <div class="c_toggle">
                 <p class="ct ct_c">Coordinates</p>
                 <p class="ct ct_a">Angles</p>
@@ -60,43 +60,41 @@
             <form action="/main/send_coordinates" method="POST" class="c_coordinates c_form">
                 <p class="cf_title">Input coordinates</p>
                 {% if sent_back_coordinates %}
-                <input type="number" class="form-table" id="fname" name="x" value={{ x }} placeholder={{ x }}>
-                <input type="number" class="form-table" id="fname" name="y" value={{ y }} placeholder={{ y }}>
-                <input type="number" class="form-table" id="fname" name="z" value={{ z }} placeholder={{ z }}>
-                <input type="submit" value="Submit">
-                <p>Joint Angles</p>
-                <div class="form-table">{{ theta1 }}</div>
-                <div class="form-table">{{ theta2 }}</div>
-                <div class="form-table">{{ theta3}}</div>
+                <input type="number" class="form-table cf_1" id="fname" name="x" value={{ x }} placeholder={{ x }}>
+                <input type="number" class="form-table cf_2" id="fname" name="y" value={{ y }} placeholder={{ y }}>
+                <input type="number" class="form-table cf_3" id="fname" name="z" value={{ z }} placeholder={{ z }}>
+                <p class="cf_sub">Corresponding Joint Angles</p>
+                <div class="form-table cf_11">&theta;1: {{ theta1 }}</div>
+                <div class="form-table cf_22">&theta;2: {{ theta2 }}</div>
+                <div class="form-table cf_33">&theta;3: {{ theta3 }}</div>
                 {% else %}
                 <input type="number" class="form-table cf_1" id="fname" name="x" placeholder='x'>
                 <input type="number" class="form-table cf_2" id="fname" name="y" placeholder='y'>
                 <input type="number" class="form-table cf_3" id="fname" name="z" placeholder='z'>
-                <input type="submit" value="Submit" class="cf_submit">
                 {% endif %}
+                <input type="submit" value="Submit" class="cf_submit">
             </form>
 
             <form action="/main/send_angles" method="POST" class="c_angles c_form">
                 <p class="cf_title">Input angles</p>
                 {% if sent_back_angles %}
-                <input type="number" class="form-table" id="fname" name="theta1" value={{ theta1 }} placeholder={{ theta1 }}>
-                <input type="number" class="form-table" id="fname" name="theta2" value={{ theta2 }} placeholder={{ theta2 }}>
-                <input type="number" class="form-table" id="fname" name="theta3" value={{ theta3 }} placeholder={{ theta3 }}>
-                <input type="submit" value="Submit">
-                <p>Joint 1</p>
-                <div class="form-table">{{ x1 }}</div>
-                <div class="form-table">{{ y1 }}</div>
-                <div class="form-table">{{ z1 }}</div>
-                <p>Joint 2</p>
-                <div class="form-table">{{ x2 }}</div>
-                <div class="form-table">{{ y2 }}</div>
-                <div class="form-table">{{ z2 }}</div>
+                <input type="number" class="form-table cf_1" id="fname" name="theta1" value={{ theta1 }} placeholder={{ theta1 }}>
+                <input type="number" class="form-table cf_2" id="fname" name="theta2" value={{ theta2 }} placeholder={{ theta2 }}>
+                <input type="number" class="form-table cf_3" id="fname" name="theta3" value={{ theta3 }} placeholder={{ theta3 }}>
+                <p class="cf_sub">Joint 1</p>
+                <div class="form-table cf_11">x1: {{ x1 }}</div>
+                <div class="form-table cf_22">y1: {{ y1 }}</div>
+                <div class="form-table cf_33">z1: {{ z1 }}</div>
+                <p class="cf_subsub">Joint 2</p>
+                <div class="form-table cf_111">x2: {{ x2 }}</div>
+                <div class="form-table cf_222">y2: {{ y2 }}</div>
+                <div class="form-table cf_333">z2: {{ z2 }}</div>
                 {% else %}
                 <input type="number" class="form-table cf_1" id="fname" name="theta1" placeholder="theta 1">
                 <input type="number" class="form-table cf_2" id="fname" name="theta2" placeholder="theta 2">
                 <input type="number" class="form-table cf_3" id="fname" name="theta3" placeholder="theta 3">
-                <input type="submit" value="Submit" class="cf_submit">
                 {% endif %}
+                <input type="submit" value="Submit" class="cf_submit">
             </form>
 
             <div class="c_howto">
