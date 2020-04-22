@@ -171,6 +171,21 @@ a {
     place-items: center center;
 }
 
+.recording_obs {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    grid-template-columns: 1fr 20%;
+    grid-template-rows: 8% 1fr 5%;
+    grid-template-areas:
+        "title settings"
+        "video video"
+        "credits credits";
+    place-items: center center;
+}
+
 .controlers{
     grid-area: controlers;
 }
