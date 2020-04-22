@@ -106,7 +106,7 @@ $(document).ready(function () {
 
     // loading animation
     $('.loader').ready(function () {
-        var time_int = 60;
+        var time_int = 1;
         loader = setInterval(progress, time_int);
         console.log("LOADING - STEP 1");
     });
