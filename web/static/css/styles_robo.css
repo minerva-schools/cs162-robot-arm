@@ -118,6 +118,7 @@ a {
 
 .sign-in-buttons {
     color: inherit;
+    margin-left: 5px;
     border: 2px solid white;
     min-width: 100px;
     border-radius: 15px;
@@ -628,11 +629,28 @@ video {
   z-index: 18;
 }
 
+.mouseovert_text_register{
+  visibility: hidden;
+  width: 210px;
+  background-color: white;
+  color: grey;
+  text-align: center;
+  border-radius: 6px;
+  margin: 15px -100px;
+  padding:10px 10px;
+  position: absolute;
+  z-index: 19;
+}
+
 .observe-button:hover .mouseovert_text {
   visibility: visible;
 }
 
 .signin-button:hover .mouseovert_text_sign_in {
+  visibility: visible;
+}
+
+.register-button:hover .mouseovert_text_register {
   visibility: visible;
 }
 
