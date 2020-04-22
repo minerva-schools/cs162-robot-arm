@@ -20,22 +20,27 @@
 <body>
     <main class="recording">
         <div class="title small_logo">
-                <a href="{{ url_for('welcome') }}">
-                  <h3>RoboArm</h3>
-                </a>
+            <a href="{{ url_for('welcome') }}">
+                <h3>RoboArm</h3>
+            </a>
         </div>
-        <button class="settings_button"><img src="static/images/cog.png" alt="settings icon"></button>
-        <div class="settings_dropdown">
+        <!-- <button class="settings_button"><img src="static/images/cog.png" alt="settings icon"></button>-->
+        <!-- <div class="settings_dropdown">
             <a class="settings_dropdown_option change_controls">
                 <div>Change controls</div>
-            </a>
+            </a> 
             <a class="settings_dropdown_option upload_button">
                 <div>Upload a code file</div>
             </a>
             <a href="{{ url_for('logout') }}" class="settings_dropdown_option">
                 <div>Log out</div>
             </a>
+        </div> -->
+        <div class="main-page-buttons">
+            <p><a class="main-page-button upload_button"> Upload a code file </a></p>
+            <p> <a href="{{ url_for('logout') }}" class="main-page-button">Log out</a></p>
         </div>
+
 
         <div class="r_video">
             <div id="kaltura_player_1587453207"></div>
@@ -49,8 +54,8 @@
             <input type="range" min="1" max="100" value="50" class="slider slider_hor" id="UpDown"> -->
         </div>
 
-            <div class="controlers">
-            <img class = "armform" src="static/images/armform.png">
+        <div class="controlers">
+            <img class="armform" src="static/images/armform.png">
             <form action="/main/send_angles" method="POST"><br>
                 <p> Angles </p>
                 {% if sent_back_angles %}
@@ -101,7 +106,7 @@
                 <input type="submit" value="Submit">
                 {% endif %}
             </form>
-</div>
+        </div>
 
         <div class="credits">&copy; RoboArm Team 2020</div>
     </main>
@@ -129,15 +134,16 @@
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
     <script src="https://cdnapisec.kaltura.com/p/2763741/sp/276374100/embedIframeJs/uiconf_id/45509061/partner_id/2763741"></script>
     <script>
-kWidget.embed({
-  "targetId": "kaltura_player_1587453207",
-  "wid": "_2763741",
-  "uiconf_id": 45509061,
-  "flashvars": {},
-  "cache_st": 1587453207,
-  "entry_id": "1_k8b67b1m"
-});
-</script>
+        kWidget.embed({
+            "targetId": "kaltura_player_1587453207",
+            "wid": "_2763741",
+            "uiconf_id": 45509061,
+            "flashvars": {},
+            "cache_st": 1587453207,
+            "entry_id": "1_k8b67b1m"
+        });
+
+    </script>
 </body>
 
 </html>
