@@ -332,9 +332,19 @@ a {
     padding-top: 1vh;
 }
 
-.rec_obs {
-    grid-template-columns: 1fr 10%;
-    grid-template-rows: 10% 1fr 5%;
+.recording_obs {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    grid-template-columns: 1fr 20%;
+    grid-template-rows: 8% 1fr 5%;
+    grid-template-areas:
+        "title settings"
+        "video video"
+        "credits credits";
+    place-items: center center;
 }
 
 .small_logo {
@@ -347,12 +357,12 @@ a {
     font-size: 1.3em;
 }
 
-.tutorial {
+.r_video {
     grid-area: video;
     border: 3px solid white;
     height: 95%;
     width: 95%;
-    background-color: var(--dark-grey);
+    background-color: black;
     border-radius: 20px;
 }
 
@@ -499,6 +509,28 @@ video {
     border-radius: 5px;
     background-color: var(--dark-grey);
 }
+
+.main-page-buttons{
+    grid-area: settings;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main-page-button{
+    padding: 8px;
+    min-width: 45%;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: var(--dark-grey);
+}
+
+.upload_button:hover {
+    cursor: pointer;
+}
+
 
 .settings_dropdown_option:active {
     -webkit-transform: scale(0.9);
@@ -780,4 +812,57 @@ video {
 
 .signin-button:hover .mouseovert_text_sign_in {
   visibility: visible;
+}
+
+.recording_help {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    grid-template-columns: 1fr 10%;
+    grid-template-rows: 8% 1fr 15% 5%;
+    grid-template-areas:
+        "title settings"
+        "video video"
+        "info info"
+        "credits credits";
+    place-items: center center;
+}
+
+
+.email_info {
+    grid-area: info;
+    text-align: center;
+    top: 5%;
+    left: 2%;
+    border: 3px solid white;
+    height: 70%;
+    width: 70%;
+    background-color: var(--dark-grey);
+    border-radius: 20px;
+}
+
+
+.tutorial {
+    grid-area: video;
+    top: 5%;
+    left: 2%;
+    border: 3px solid white;
+    height: 95%;
+    width: 95%;
+    background-color: var(--dark-grey);
+    border-radius: 20px;
+    padding: 5%;
+}
+
+.tutorial-video {
+    top: 12%;
+    height: 60%;
+    width: 75%;
+    
+}
+
+.txt_info {
+    padding: 2%;
 }

@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <main class="recording rec_obs">
+    <main class="recording_help rec_obs">
         <div class="title small_logo medium_logo">
             <a href="{{ url_for('welcome') }}">
                 <h3>RoboArm: Help</h3>
@@ -30,8 +30,13 @@
         </div>
 
         <div class="tutorial">
-            <video autoplay src="static/videos/tutorial.webm"></video>
+            <video class = "tutorial-video" autoplay src="static/videos/tutorial.webm" controls></video>
         </div>
+        
+        <div class="email_info">
+            <p class="txt_info"> If you have any further questions about RoboArm, please feel free to email us at <a href="mailto:help@roboarm.com">help@roboarm.com</a> and our team will get back to you as soon as posisble. </p>
+        </div>
+
 
         <div class="credits">&copy; RoboArm Team 2020</div>
     </main>
