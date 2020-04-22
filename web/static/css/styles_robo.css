@@ -105,6 +105,15 @@ a {
   cursor: pointer;
 }
 
+.log_in_button_parent {
+    place-self: center end;
+    margin-right: 2.5vw;
+}
+
+.log_in_button_parent p {
+    text-align: center;
+}
+
 .sign-in {
     grid-area: sign-in;
     display: -webkit-box;
