@@ -49,9 +49,34 @@
             <input type="range" min="1" max="100" value="50" class="slider slider_hor" id="UpDown"> -->
         </div>
 
-            <div class="controlers">
-            <img class = "armform" src="static/images/armform.png">
-            <form action="/main/send_angles" method="POST"><br>
+        <div class="controllers">
+            <h2 class="c_title">Control room</h2>
+            <img class = "c_armform" src="static/images/armform.png">
+
+            <form action="/main/send_coordinates" method="POST" class="c_coordinates"><br>
+                <p> Coordinates of end effector </p>
+                {% if sent_back_coordinates %}
+                <input type="number" class="form-table" id="fname" name="x" value={{ x }} placeholder={{ x }}>
+                <input type="number" class="form-table" id="fname" name="y" value={{ y }} placeholder={{ y }}>
+                <input type="number" class="form-table" id="fname" name="z" value={{ z }} placeholder={{ z }}>
+                <br>
+                <input type="submit" value="Submit">
+                <br>
+                <p>Joint Angles</p>
+                <div class="form-table">{{ theta1 }}</div>
+                <div class="form-table">{{ theta2 }}</div>
+                <div class="form-table">{{ theta3}}</div>
+                <br>
+                {% else %}
+                <input type="number" class="form-table" id="fname" name="x" placeholder='x'>
+                <input type="number" class="form-table" id="fname" name="y" placeholder='y'>
+                <input type="number" class="form-table" id="fname" name="z" placeholder='z'>
+                <br>
+                <input type="submit" value="Submit">
+                {% endif %}
+            </form>
+
+            <form action="/main/send_angles" method="POST" class="c_angles"><br>
                 <p> Angles </p>
                 {% if sent_back_angles %}
                 <input type="number" class="form-table" id="fname" name="theta1" value={{ theta1 }} placeholder={{ theta1 }}>
@@ -79,29 +104,13 @@
                 {% endif %}
             </form>
 
-            <form action="/main/send_coordinates" method="POST"><br>
-                <p> Coordinates of end effector </p>
-                {% if sent_back_coordinates %}
-                <input type="number" class="form-table" id="fname" name="x" value={{ x }} placeholder={{ x }}>
-                <input type="number" class="form-table" id="fname" name="y" value={{ y }} placeholder={{ y }}>
-                <input type="number" class="form-table" id="fname" name="z" value={{ z }} placeholder={{ z }}>
-                <br>
-                <input type="submit" value="Submit">
-                <br>
-                <p>Joint Angles</p>
-                <div class="form-table">{{ theta1 }}</div>
-                <div class="form-table">{{ theta2 }}</div>
-                <div class="form-table">{{ theta3}}</div>
-                <br>
-                {% else %}
-                <input type="number" class="form-table" id="fname" name="x" placeholder='x'>
-                <input type="number" class="form-table" id="fname" name="y" placeholder='y'>
-                <input type="number" class="form-table" id="fname" name="z" placeholder='z'>
-                <br>
-                <input type="submit" value="Submit">
-                {% endif %}
-            </form>
-</div>
+            <div class="c_howto">
+                <h4>How to</h4>
+                <p>You can input two types of information, but you can only input one at a time.</p>
+                <p>Your first option is sending the robot coordinates to which the head should move.</p>
+                <p>Your second option is sending angles to which each joint should rotate.</p>
+            </div>
+        </div>
 
         <div class="credits">&copy; RoboArm Team 2020</div>
     </main>

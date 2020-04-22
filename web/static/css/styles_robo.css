@@ -162,17 +162,71 @@ a {
     width: 100vw;
     background-color: black;
     color: white;
-    grid-template-columns: 1fr 20%;
+    grid-template-columns: 75% 25%;
     grid-template-rows: 8% 1fr 5%;
     grid-template-areas:
         "title settings"
-        "video controlers"
+        "video controllers"
         "credits credits";
     place-items: center center;
 }
 
-.controlers{
-    grid-area: controlers;
+.r_video {
+    grid-area: video;
+    border: 3px solid white;
+    height: 95%;
+    width: 95%;
+    border-radius: 20px;
+}
+
+.controllers{
+    grid-area: controllers;
+    border: 3px solid white;
+    height: 95%;
+    width: 95%;
+    border-radius: 20px;
+    background-color: var(--dark-grey);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 15% 25% 15% 15% 30%;
+    grid-template-areas:
+        "c_title"
+        "c_pic"
+        "c_coordinates"
+        "c_angles"
+        "c_howto";
+    place-items: center;
+}
+
+.c_title {
+    grid-area: c_title;
+}
+
+.c_armform {
+    grid-area: c_pic;
+    max-width: 98%;
+}
+
+.c_coordinates {
+    grid-area: c_coordinates;
+}
+
+.c_angles {
+    grid-area: c_angles;
+}
+
+.c_howto {
+    grid-area: c_howto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3%;
+}
+
+.c_howto p {
+    font-size: 0.85em;
+    text-align: center;
+    padding-top: 1vh;
 }
 
 .rec_obs {
@@ -188,15 +242,6 @@ a {
 
 .medium_logo {
     font-size: 1.3em;
-}
-
-.r_video {
-    grid-area: video;
-    border: 3px solid white;
-    height: 95%;
-    width: 95%;
-    background-color: black;
-    border-radius: 20px;
 }
 
 .tutorial {
@@ -257,7 +302,6 @@ video {
 .right_buttons {
     left: 75%;
 }
-
 
 .main_button {
     color: inherit;
