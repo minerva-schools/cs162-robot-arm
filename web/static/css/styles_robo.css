@@ -162,8 +162,10 @@ a {
     width: 100vw;
     background-color: black;
     color: white;
-    grid-template-columns: 75% 25%;
+    grid-template-columns: 73% 25%;
     grid-template-rows: 8% 1fr 5%;
+    grid-gap: 2%;
+    padding: 1%;
     grid-template-areas:
         "title settings"
         "video controllers"
@@ -174,26 +176,26 @@ a {
 .r_video {
     grid-area: video;
     border: 3px solid white;
-    height: 95%;
-    width: 95%;
+    height: 100%;
+    width: 100%;
     border-radius: 20px;
 }
 
 .controllers{
     grid-area: controllers;
     border: 3px solid white;
-    height: 95%;
-    width: 95%;
+    height: 100%;
+    width: 100%;
     border-radius: 20px;
     background-color: var(--dark-grey);
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 15% 25% 15% 15% 30%;
+    grid-template-rows: 10% 25% 10% 25% 30%;
     grid-template-areas:
         "c_title"
         "c_pic"
-        "c_coordinates"
-        "c_angles"
+        "c_toggle"
+        "c_form"
         "c_howto";
     place-items: center;
 }
@@ -205,14 +207,72 @@ a {
 .c_armform {
     grid-area: c_pic;
     max-width: 98%;
+    max-height: 100%;
 }
 
-.c_coordinates {
-    grid-area: c_coordinates;
+.c_toggle {
+    grid-area: c_toggle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-.c_angles {
-    grid-area: c_angles;
+.ct {
+    border: 2px solid white;
+    height: 100%;
+    padding: 5px 0px;
+    min-width: 45%;
+    border-radius: 10px;
+    background-color: var(--dark-grey);
+    text-align: center;
+    position: relative;
+}
+
+.ct_c {
+    right: -10px;
+}
+
+.ct_a {
+    left: -10px;
+}
+
+.c_form {
+    grid-area: c_form;
+    display: grid;
+    max-width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+        "cf_title cf_title cf_title"
+        "cf_1 cf_2 cf_3"
+        ". cf_submit .";
+    place-items: center;
+}
+
+.form-table {
+    width: 80%;
+    padding: 5px;
+}
+
+.cf_title {
+    grid-area: cf_title;
+}
+
+.cf_1 {
+    grid-area: cf_1;
+}
+
+.cf_2 {
+    grid-area: cf_2;
+}
+
+.cf_3 {
+    grid-area: cf_3;
+}
+
+.cf_submit {
+    grid-area: cf_submit;
 }
 
 .c_howto {
@@ -563,7 +623,6 @@ video {
 
 .file_upload {
     padding: 15px 0px;
-
 }
 
 .btn:hover {
@@ -678,13 +737,4 @@ video {
 
 .signin-button:hover .mouseovert_text_sign_in {
   visibility: visible;
-}
-
-.armform{
-    height: 200px;
-    width: 300px;
-}
-
-.form-table{
-    width: 60px;
 }
