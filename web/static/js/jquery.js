@@ -18,6 +18,50 @@ function cancel_login() {
   $('.login_message').remove();
 }
 
+function to_angles() {
+    $('.c_coordinates').css({
+        visibility: "hidden"
+    });
+    $('.c_angles').css({
+        visibility: "visible"
+    });
+    $('.ct_a').css({
+        "background-color": "white",
+        "color": "var(--dark-grey)",
+        "z-index": 3
+    });
+    $('.ct_c').css({
+        "background-color": "var(--dark-grey)",
+        "color": "white",
+        "z-index": 2
+    });
+    $('.ct_c').hover(function() {
+        $(this).css({"cursor": "pointer"})
+    });
+}
+
+function to_coordinates() {
+    $('.c_angles').css({
+        visibility: "hidden"
+    });
+    $('.c_coordinates').css({
+        visibility: "visible"
+    });
+    $('.ct_c').css({
+        "background-color": "white",
+        "color": "var(--dark-grey)",
+        "z-index": 3
+    });
+    $('.ct_a').css({
+        "background-color": "var(--dark-grey)",
+        "color": "white",
+        "z-index": 2
+    });
+    $('.ct_a').hover(function() {
+        $(this).css({"cursor": "pointer"})
+    });
+}
+
 $(document).ready(function () {
 
     // log-in form display
@@ -139,40 +183,17 @@ $(document).ready(function () {
     }
 
     // change of controls
-    $('.main_button').ready(function () {
-        $('.main_button').css({
-            visibility: "hidden"
-        });
-    });
-    var controls = "sliders";
+    to_coordinates()
+    var controls = "coordinates";
 
-    $('.change_controls').click(function () {
-        if (controls == "sliders") {
-            $('.main_button').css({
-                visibility: "visible"
-            });
-            $('.slider').css({
-                visibility: "hidden"
-            });
-            $('.slider1').css({
-                visibility: "hidden"
-            });
-            controls = "left_buttons";
-        } else if (controls == "left_buttons") {
-            $('.main_buttons').removeClass('left_buttons').addClass('right_buttons');
-            controls = "right_buttons";
-        } else if (controls == "right_buttons") {
-            $('.main_buttons').removeClass('right_buttons').addClass('left_buttons');
-            $('.main_button').css({
-                visibility: "hidden"
-            });
-            $('.slider').css({
-                visibility: "visible"
-            });
-            $('.slider1').css({
-                visibility: "visible"
-            });
-            controls = "sliders";
+    $('.ct').click(function () {
+        if (controls == "coordinates") {
+            to_angles()
+            controls = "angles"
+        } else if (controls == "angles") {
+            // $('.main_buttons').removeClass('right_buttons').addClass('left_buttons');
+            to_coordinates()
+            controls = "coordinates";
         }
     });
 
