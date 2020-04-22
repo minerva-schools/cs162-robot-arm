@@ -23,7 +23,8 @@ import time  #Used to time some events
 
 model = load_model('web/robotmodel/model1.h5')
 # model = load_model('model1.h5')
-
+global graph
+graph = tf.get_default_graph()
 
 
 """
@@ -98,7 +99,8 @@ def coordinates_to_angles(x,y,z):
     posZ = z
 
     pred = np.array([[posX, posY, posZ]])
-    a = model.predict(pred)
+    with graph.as_default():
+        a = model.predict(pred)
     teta1 = a[0][0]
     teta2 = a[0][1]
     teta3 = a[0][2]
