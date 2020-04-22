@@ -1,5 +1,7 @@
 # Project specific files to ignore
 web/web.db
+web/primary.db
+web/robotmodel/model1.h5
 venv_unit/
 venv_integration/
 
