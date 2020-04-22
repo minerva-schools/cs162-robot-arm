@@ -14,16 +14,27 @@ import tensorflow as tf
 # from sklearn.model_selection import train_test_split #used later to split the dataset in training and testing
 # import serial #used to communicate with the Arduino
 import time  #Used to time some events
-
+from keras.utils.data_utils import get_file
+import urllib
 
 
 #Loads the machine learning model generated to change coordinates into angles
 #The machine learning file is included in the same folder as this file
 #To examine how this model was generated please refer to the main code included as a jupyter notebook
 
-model = load_model('web/robotmodel/model1.h5')
+# model = load_model('web/robotmodel/model1.h5')
 # model = load_model('model1.h5')
+# URL = 'https://drive.google.com/uc?export=download&id=1rQL0v_ZAhtDlufGmamQ1rc0b9JWqGmHW'
+# weights_path = get_file(
+#             'model1.h5',
+#             URL)
+# model.load_weights(weights_path)
+URL = 'https://www.dropbox.com/s/kiohvn1u64g45co/model1.h5?dl=1'
+urllib.request.urlretrieve(URL,'web/robotmodel/downloaded_model.h5')
+model = load_model('web/robotmodel/downloaded_model.h5')
 
+global graph
+graph = tf.get_default_graph()
 
 
 """
@@ -98,12 +109,13 @@ def coordinates_to_angles(x,y,z):
     posZ = z
 
     pred = np.array([[posX, posY, posZ]])
-    a = model.predict(pred)
+    with graph.as_default():
+        a = model.predict(pred)
     teta1 = a[0][0]
     teta2 = a[0][1]
     teta3 = a[0][2]
     return teta1, teta2, teta3
-# print('HEY',coordinates_to_angles(1,2,3))
+print('HEY',coordinates_to_angles(1,2,3))
 
 """
 This function is used to show the arm graphically in the simplest form possible
