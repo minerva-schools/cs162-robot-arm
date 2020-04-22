@@ -6,6 +6,7 @@ from flask_login import LoginManager, UserMixin, current_user, login_user, login
 from flask_sqlalchemy import SQLAlchemy #SQL Alchemy to create the database
 import sys
 from werkzeug.security import generate_password_hash, check_password_hash
+from .robotmodel.python_to_aduino import forward_kin_end, forward_kin_mid, coordinates_to_angles
 #Creating the primary database
 class User(UserMixin, db.Model): # A table to store users data
     __tablename__ = 'User'
@@ -116,6 +117,32 @@ This function does not allow duplicate tasks to exist
 def home():
     g.user = current_user
     return render_template("main.html", myuser=current_user)
+
+@app.route('/main/send_angles', methods=["POST"])
+@login_required
+def process_angles():
+    # angle measures from user
+    # these angles are 1st, 2nd, and 3rd joint angle IN DEGREES
+    theta1, theta2, theta3 = float(request.form['theta1']), float(request.form['theta2']), float(request.form['theta3'])
+    # coordinates of the end effector
+    x1, y1, z1 = forward_kin_end(theta1, theta2, theta3)
+    # coordinate of the mid joint
+    x2, y2, z2 = forward_kin_mid(theta1, theta2, theta3)
+    content = {'x1': str(round(x1,2)), 'y1':str(round(y1,2)), 'z1':str(round(z1,2)),
+               'x2': str(round(x2,2)), 'y2':str(round(y2,2)), 'z2':str(round(z2,2)),
+               'theta1': str(theta1), 'theta2': str(theta2), 'theta3': str(theta3)}
+    return render_template("main.html", sent_back_angles=True, **content)
+
+@app.route('/main/send_coordinates', methods=["POST"])
+@login_required
+def process_coordinates():
+    # coordinate measures from user
+    x, y, z = float(request.form['x']), float(request.form['y']), float(request.form['z'])
+    # converted angles
+    theta1, theta2, theta3 = coordinates_to_angles(x, y, z)
+    content = {'x': str(x), 'y':str(y), 'z':str(z),
+               'theta1': str(round(theta1,2)), 'theta2': str(round(theta2,2)), 'theta3': str(round(theta3,2))}
+    return render_template("main.html", sent_back_coordinates=True, **content)
 
 #Running the application
 if __name__ == "__main__":
