@@ -24,6 +24,7 @@ import urllib
 
 # model = load_model('web/robotmodel/model1.h5')
 # model = load_model('model1.h5')
+<<<<<<< HEAD
 # URL = 'https://drive.google.com/uc?export=download&id=1rQL0v_ZAhtDlufGmamQ1rc0b9JWqGmHW'
 # weights_path = get_file(
 #             'model1.h5',
@@ -35,6 +36,12 @@ model = load_model('web/robotmodel/downloaded_model.h5')
 
 global graph
 graph = tf.get_default_graph()
+||||||| merged common ancestors
+
+=======
+global graph
+graph = tf.get_default_graph()
+>>>>>>> 70e9bf6c4aea4885d311a81934ab55b6731a3ec7
 
 
 """
