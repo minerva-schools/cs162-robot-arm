@@ -1,12 +1,12 @@
 #Importing All the needed libraries
-from . import db, app, login
+from __init__ import db, app, login
 import os #To handle files path
 from flask import Flask, render_template, redirect, request, g, session #Main Flask
 from flask_login import LoginManager, UserMixin, current_user, login_user, login_required, logout_user #To create the Login
 from flask_sqlalchemy import SQLAlchemy #SQL Alchemy to create the database
 import sys
 from werkzeug.security import generate_password_hash, check_password_hash
-from .robotmodel.python_to_aduino import forward_kin_end, forward_kin_mid, coordinates_to_angles
+#from .robotmodel.python_to_aduino import forward_kin_end, forward_kin_mid, coordinates_to_angles
 #Creating the primary database
 class User(UserMixin, db.Model): # A table to store users data
     __tablename__ = 'User'
@@ -94,7 +94,7 @@ def login():
             error = 'The password or the username you entered is not correct!'
             return render_template('index.html', message=error)
         login_user(user)
-        return redirect('/main')
+        return redirect('/waitroom')
         # return render_template('main.html')
     elif request.method == 'GET':
         return render_template('index.html')
@@ -107,6 +107,17 @@ This function is responsible for logging users out
 def logout():
     logout_user()
     return redirect('login')
+
+"""
+This functions sends the user to waitroom after they have logged in
+"""
+
+@app.route('/waitroom', methods=["GET", "POST"])
+@login_required
+def waitroom():
+    g.user = current_user
+    return render_template("waitroom.html", myuser=current_user)
+
 
 """
 This is the primary function responsible for displaying the tasks

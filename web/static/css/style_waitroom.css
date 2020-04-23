@@ -1,0 +1,245 @@
+/* CSS Variables */
+:root {
+    --primary: black;
+    --dark: white;
+    --light: black;
+    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  }
+
+* {
+
+    font-family: 'Ubuntu', sans-serif;
+}
+  
+html {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--dark);
+    background-color: black;
+  }
+  
+body {
+    background: black;
+    margin: 30px 50px;
+    line-height: 1.4;
+  }
+  
+
+
+.btn {
+    color: inherit;
+    border: 2px solid white;
+    min-width: 100px;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #444;
+    text-decoration: none;
+    text-align: center;
+}
+.btn:hover{
+  opacity: 60%;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn:active {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+}
+  
+img {
+    max-width: 100%;
+  }
+  
+.wrapper {
+    display: grid;
+    grid-gap: 20px;
+  }
+.head{
+  display: grid;
+  grid-template-areas: 
+  'leftside rightside';
+}
+
+.leftside{
+  grid-area: leftside;
+}
+
+
+.rightside{
+  grid-area: rightside;
+  float: right;
+  text-align: right;
+}
+  /* Top Container */
+  .top-container {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas:
+      'top-box-a showcase'
+      'top-box-b showcase'
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+ }
+  
+  /* Showcase */
+  .showcase {
+    grid-area: showcase;
+    min-height: 400px;
+    background: black;
+    background-size: cover;
+    background-position: center;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid white;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+  }
+  
+  .showcase h1 {
+    margin-bottom: 0;
+    color: var(--dark);
+    text-align: center;
+  }
+
+  .logo{
+    place-self: center start;
+    padding-left: 20%;
+    font-size: 1.3em;
+  }
+  
+  .showcase p {
+    font-size: 1.3rem;
+    margin-top: 0;
+    color: var(--dark);
+  }
+
+
+  /* Top Box */
+  .top-box {
+    background-image: url("/static/images/robarm.png");
+    /*opacity: 30%;*/
+    border: 3px solid white;
+    border-radius: 20px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .top-box .room {
+    font-size: 2.5rem;
+  }
+  
+  .top-box-a {
+    grid-area: top-box-a;
+  }
+  
+  .top-box-b {
+    grid-area: top-box-b;
+  }
+  
+  /* Boxes */
+  .boxes {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .box {
+    background: var(--primary);
+    text-align: center;
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow);
+  }
+
+  .dropbtn {
+    background-image: url("static/images/cog.png");
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
+
+  /* Media Queries */
+  @media (max-width: 700px) {
+    .top-container {
+      grid-template-areas:
+        'showcase showcase'
+        'top-box-a top-box-b';
+    }
+  
+    .showcase h1 {
+      font-size: 2.5rem;
+    }
+  
+    .main-nav ul {
+      grid-template-columns: 1fr;
+    }
+  
+    .info {
+      grid-template-columns: 1fr;
+    }
+  
+    .info .btn {
+      display: block;
+      text-align: center;
+      margin: auto;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .top-container {
+      grid-template-areas:
+        'showcase'
+        'top-box-a'
+        'top-box-b';
+    }
+  }
+  
