@@ -65,17 +65,17 @@
             <form action="/main/send_coordinates" method="POST" class="c_coordinates c_form">
                 <p class="cf_title">Input coordinates</p>
                 {% if sent_back_coordinates %}
-                <input type="number" step=".01" min=0 class="form-table cf_1" id="fname" name="x" value={{ x }} placeholder={{ x }}>
-                <input type="number" step=".01" min=0 class="form-table cf_2" id="fname" name="y" value={{ y }} placeholder={{ y }}>
-                <input type="number" step=".01" min=0 class="form-table cf_3" id="fname" name="z" value={{ z }} placeholder={{ z }}>
+                <input type="number" step=".01" min=0 class="form-table cf_1" id="fname" name="x" value={{ x }} placeholder={{ x }} required>
+                <input type="number" step=".01" min=0 class="form-table cf_2" id="fname" name="y" value={{ y }} placeholder={{ y }} required>
+                <input type="number" step=".01" min=0 class="form-table cf_3" id="fname" name="z" value={{ z }} placeholder={{ z }} required>
                 <p class="cf_sub">Corresponding Joint Angles</p>
                 <div class="form-table cf_11">&theta;1: {{ theta1 }}</div>
                 <div class="form-table cf_22">&theta;2: {{ theta2 }}</div>
                 <div class="form-table cf_33">&theta;3: {{ theta3 }}</div>
                 {% else %}
-                <input type="number" step=".01" min=0 class="form-table cf_1" id="fname" name="x" placeholder='x'>
-                <input type="number" step=".01" min=0 class="form-table cf_2" id="fname" name="y" placeholder='y'>
-                <input type="number" step=".01" min=0 class="form-table cf_3" id="fname" name="z" placeholder='z'>
+                <input type="number" step=".01" min=0 class="form-table cf_1" id="fname" name="x" placeholder='x' required>
+                <input type="number" step=".01" min=0 class="form-table cf_2" id="fname" name="y" placeholder='y' required>
+                <input type="number" step=".01" min=0 class="form-table cf_3" id="fname" name="z" placeholder='z' required>
                 {% endif %}
                 <input type="submit" value="Submit" class="cf_submit">
             </form>
