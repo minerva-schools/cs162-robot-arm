@@ -29,6 +29,7 @@ import urllib
 #             'model1.h5',
 #             URL)
 # model.load_weights(weights_path)
+
 URL = 'https://www.dropbox.com/s/kiohvn1u64g45co/model1.h5?dl=1'
 urllib.request.urlretrieve(URL,'web/robotmodel/downloaded_model.h5')
 model = load_model('web/robotmodel/downloaded_model.h5')

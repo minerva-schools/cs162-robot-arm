@@ -1,7 +1,7 @@
 #Importing All the needed libraries
 from __init__ import db, app, login
 import os #To handle files path
-from flask import Flask, render_template, redirect, request, g, session #Main Flask
+from flask import Flask, render_template, redirect, request, send_file, g, session #Main Flask
 from flask_login import LoginManager, UserMixin, current_user, login_user, login_required, logout_user #To create the Login
 from flask_sqlalchemy import SQLAlchemy #SQL Alchemy to create the database
 import sys
@@ -134,7 +134,17 @@ def home():
 def process_angles():
     # angle measures from user
     # these angles are 1st, 2nd, and 3rd joint angle IN DEGREES
-    theta1, theta2, theta3 = float(request.form['theta1']), float(request.form['theta2']), float(request.form['theta3'])
+    theta1, theta2, theta3 = request.form['theta1'], request.form['theta2'], request.form['theta3']
+    # convert to float to work with conversion function
+    theta1, theta2, theta3 = float(theta1), float(theta2), float(theta3)
+
+    # export to a txt file
+    file_object = open(r"web/sources/command_info.txt", "w")
+    for line in [str(int(theta1))+'\n', str(int(theta2))+'\n', str(int(theta3))]:
+        file_object.writelines(line)
+
+    # # convert to float to work with conversion function
+    # theta1, theta2, theta3 = float(theta1), float(theta2), float(theta3)
     # coordinates of the end effector
     x1, y1, z1 = forward_kin_end(theta1, theta2, theta3)
     # coordinate of the mid joint
@@ -151,10 +161,21 @@ def process_coordinates():
     x, y, z = float(request.form['x']), float(request.form['y']), float(request.form['z'])
     # converted angles
     theta1, theta2, theta3 = coordinates_to_angles(x, y, z)
+    # export to a txt file
+    file_object = open(r"web/sources/command_info.txt", "w")
+    for line in [str(int(theta1))+'\n', str(int(theta2))+'\n', str(int(theta3))]:
+        file_object.writelines(line)
+
+    theta1, theta2, theta3 = str(round(theta1,2)), str(round(theta2,2)), str(round(theta3,2))
     content = {'x': str(x), 'y':str(y), 'z':str(z),
-               'theta1': str(round(theta1,2)), 'theta2': str(round(theta2,2)), 'theta3': str(round(theta3,2))}
+               'theta1': theta1, 'theta2': theta2, 'theta3': theta3}
     return render_template("main.html", sent_back_coordinates=True, **content)
 
+# allows downloading the updated file using url '/download'
+@app.route('/download')
+def download():
+    path = "sources/command_info.txt"
+    return send_file(path, as_attachment=True)
 #Running the application
 if __name__ == "__main__":
     app.run(debug=True)
