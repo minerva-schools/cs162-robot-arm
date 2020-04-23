@@ -23,7 +23,18 @@ body {
     margin: 30px 50px;
     line-height: 1.4;
   }
-  
+
+  .btn_disabled {
+    color: inherit;
+    border: 2px solid white;
+    min-width: 100px;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #444;
+    text-decoration: none;
+    text-align: center;
+    pointer-events: none;
+}
 
 
 .btn {
@@ -65,13 +76,19 @@ img {
 
 .leftside{
   grid-area: leftside;
+  margin: 0;
+  padding-top: 0em;
 }
 
+.leftside h3{
+  font-size: 1.5em;
+}
 
 .rightside{
   grid-area: rightside;
   float: right;
   text-align: right;
+  padding-top: 30px;
 }
   /* Top Container */
   .top-container {
@@ -111,6 +128,21 @@ img {
     margin-bottom: 0;
     color: var(--dark);
     text-align: center;
+    font-size: 3rem;
+  }
+
+  .showcase h3 {
+    margin-bottom: 0;
+    color: var(--dark);
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  
+  .showcase h2 {
+    margin-bottom: 0;
+    color: var(--dark);
+    text-align: center;
+    font-size: 2rem;
   }
 
   .logo{
@@ -151,6 +183,7 @@ img {
   
   .top-box-b {
     grid-area: top-box-b;
+    opacity: 30%;
   }
   
 

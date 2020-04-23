@@ -10,12 +10,9 @@
 
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style_waitroom.css') }}">
-    
-
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <!-- <script src="jquery.js"></script> -->
 </head>
 
@@ -41,8 +38,12 @@
           <header class="showcase">
             <h1>Welcome {{current_user.username}}!</h1>
             <br>
+            <br>
+            <br>
             <h3>Your Wait Time is:</h3>
-            <h4>Your Number in Queue is:</h4>
+            <h2 id="demo"> </h2>
+            <h3>Your Number in Queue is:</h3>
+            <h2>2nd</h2>
           </header>
           <div class="top-box top-box-a">
             <h4>RoboArm 1</h4>
@@ -51,11 +52,13 @@
           </div>
           <div class="top-box top-box-b">
             <h4>RoboArm 2</h4>
-            <p class="room">Enter Room 2</p>
-            <a href="" class="btn">Enter</a>
+            <p class="room">Room 2 Not Connected</p>
+            <a href="" class="btn_disabled" disabled>Enter</a>
           </div>
         </section>
         <div class="footer">&copy;Robot Arm Team 2020</div>
+        <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+
 
     
 
