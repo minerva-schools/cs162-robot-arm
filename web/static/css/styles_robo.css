@@ -105,6 +105,15 @@ a {
   cursor: pointer;
 }
 
+.log_in_button_parent {
+    place-self: center end;
+    margin-right: 2.5vw;
+}
+
+.log_in_button_parent p {
+    text-align: center;
+}
+
 .sign-in {
     grid-area: sign-in;
     display: -webkit-box;
@@ -118,6 +127,7 @@ a {
 
 .sign-in-buttons {
     color: inherit;
+    margin-left: 5px;
     border: 2px solid white;
     min-width: 100px;
     border-radius: 15px;
@@ -162,22 +172,189 @@ a {
     width: 100vw;
     background-color: black;
     color: white;
-    grid-template-columns: 1fr 20%;
+    grid-template-columns: 73% 25%;
     grid-template-rows: 8% 1fr 5%;
+    grid-gap: 2%;
+    padding: 1%;
     grid-template-areas:
         "title settings"
-        "video controlers"
+        "video controllers"
         "credits credits";
     place-items: center center;
 }
 
-.controlers{
-    grid-area: controlers;
+.r_video {
+    grid-area: video;
+    border: 3px solid white;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
 }
 
-.rec_obs {
-    grid-template-columns: 1fr 10%;
-    grid-template-rows: 10% 1fr 5%;
+.controllers{
+    grid-area: controllers;
+    border: 3px solid white;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    background-color: var(--dark-grey);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 10% 50% 30%;
+    grid-template-areas:
+        "c_title"
+        "c_toggle"
+        "c_form"
+        "c_howto";
+    place-items: center;
+}
+
+.c_title {
+    grid-area: c_title;
+}
+
+.c_toggle {
+    grid-area: c_toggle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.ct {
+    border: 2px solid white;
+    height: 100%;
+    padding: 5px 0px;
+    min-width: 45%;
+    border-radius: 10px;
+    background-color: var(--dark-grey);
+    text-align: center;
+    position: relative;
+}
+
+.ct_c {
+    right: -10px;
+}
+
+.ct_a {
+    left: -10px;
+}
+
+.c_form {
+    grid-area: c_form;
+    place-self: start center;
+    display: grid;
+    max-width: 95%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "cf_title cf_title cf_title"
+        "cf_1 cf_2 cf_3"
+        ". cf_submit ."
+        "cf_sub cf_sub cf_sub"
+        "cf_11 cf_22 cf_33"
+        "cf_subsub cf_subsub cf_subsub"
+        "cf_111 cf_222 cf_333";
+    place-items: center;
+    grid-gap: 3px;
+}
+
+.form-table {
+    width: 80%;
+    padding: 5px;
+    text-align: center;
+}
+
+.cf_title {
+    grid-area: cf_title;
+}
+
+.cf_1 {
+    grid-area: cf_1;
+}
+
+.cf_2 {
+    grid-area: cf_2;
+}
+
+.cf_3 {
+    grid-area: cf_3;
+}
+
+.cf_sub {
+    grid-area: cf_sub;
+}
+
+.cf_11 {
+    grid-area: cf_11;
+}
+
+.cf_22 {
+    grid-area: cf_22;
+}
+
+.cf_33 {
+    grid-area: cf_33;
+}
+
+.cf_subsub {
+    grid-area: cf_subsub;
+}
+
+.cf_111 {
+    grid-area: cf_111;
+}
+
+.cf_222 {
+    grid-area: cf_222;
+}
+
+.cf_333 {
+    grid-area: cf_333;
+}
+
+.cf_submit {
+    grid-area: cf_submit;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 5px;
+    background-color: var(--dark-grey);
+    width: 100%;
+}
+
+.cf_submit:hover {
+    cursor: pointer;
+}
+
+.c_howto {
+    grid-area: c_howto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3%;
+}
+
+.c_howto p {
+    font-size: 0.85em;
+    text-align: center;
+    padding-top: 1vh;
+}
+
+.recording_obs {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    grid-template-columns: 1fr 20%;
+    grid-template-rows: 8% 1fr 5%;
+    grid-template-areas:
+        "title settings"
+        "video video"
+        "credits credits";
+    place-items: center center;
 }
 
 .small_logo {
@@ -196,15 +373,6 @@ a {
     height: 95%;
     width: 95%;
     background-color: black;
-    border-radius: 20px;
-}
-
-.tutorial {
-    grid-area: video;
-    border: 3px solid white;
-    height: 95%;
-    width: 95%;
-    background-color: var(--dark-grey);
     border-radius: 20px;
 }
 
@@ -257,7 +425,6 @@ video {
 .right_buttons {
     left: 75%;
 }
-
 
 .main_button {
     color: inherit;
@@ -352,6 +519,28 @@ video {
     border-radius: 5px;
     background-color: var(--dark-grey);
 }
+
+.main-page-buttons{
+    grid-area: settings;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main-page-button{
+    padding: 8px;
+    min-width: 45%;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: var(--dark-grey);
+}
+
+.upload_button:hover {
+    cursor: pointer;
+}
+
 
 .settings_dropdown_option:active {
     -webkit-transform: scale(0.9);
@@ -519,7 +708,6 @@ video {
 
 .file_upload {
     padding: 15px 0px;
-
 }
 
 .btn:hover {
@@ -628,6 +816,19 @@ video {
   z-index: 18;
 }
 
+.mouseovert_text_register{
+  visibility: hidden;
+  width: 210px;
+  background-color: white;
+  color: grey;
+  text-align: center;
+  border-radius: 6px;
+  margin: 15px -100px;
+  padding:10px 10px;
+  position: absolute;
+  z-index: 19;
+}
+
 .observe-button:hover .mouseovert_text {
   visibility: visible;
 }
@@ -636,11 +837,59 @@ video {
   visibility: visible;
 }
 
-.armform{
-    height: 200px;
-    width: 300px;
+.register-button:hover .mouseovert_text_register {
+  visibility: visible;
 }
 
-.form-table{
-    width: 60px;
+.recording_help {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    grid-template-columns: 1fr 10%;
+    grid-template-rows: 8% 1fr 15% 5%;
+    grid-template-areas:
+        "title settings"
+        "video video"
+        "info info"
+        "credits credits";
+    place-items: center center;
+}
+
+
+.email_info {
+    grid-area: info;
+    text-align: center;
+    top: 5%;
+    left: 2%;
+    border: 3px solid white;
+    height: 70%;
+    width: 70%;
+    background-color: var(--dark-grey);
+    border-radius: 20px;
+}
+
+
+.tutorial {
+    grid-area: video;
+    top: 5%;
+    left: 2%;
+    border: 3px solid white;
+    height: 95%;
+    width: 95%;
+    background-color: var(--dark-grey);
+    border-radius: 20px;
+    padding: 5%;
+}
+
+.tutorial-video {
+    top: 12%;
+    height: 60%;
+    width: 75%;
+    
+}
+
+.txt_info {
+    padding: 2%;
 }
