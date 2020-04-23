@@ -160,7 +160,7 @@ def process_coordinates():
 # allows downloading the updated file using url '/download'
 @app.route('/download')
 def download():
-    path = "web/sources/command_info.txt"
+    path = "sources/command_info.txt"
     return send_file(path, as_attachment=True)
 #Running the application
 if __name__ == "__main__":
