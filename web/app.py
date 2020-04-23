@@ -124,13 +124,16 @@ def process_angles():
     # angle measures from user
     # these angles are 1st, 2nd, and 3rd joint angle IN DEGREES
     theta1, theta2, theta3 = request.form['theta1'], request.form['theta2'], request.form['theta3']
-    # export to a txt file
-    file_object = open(r"web/sources/command_info.txt", "w")
-    for line in [theta1+'\n', theta2+'\n', theta3]:
-        file_object.writelines(line)
-
     # convert to float to work with conversion function
     theta1, theta2, theta3 = float(theta1), float(theta2), float(theta3)
+
+    # export to a txt file
+    file_object = open(r"web/sources/command_info.txt", "w")
+    for line in [str(int(theta1))+'\n', str(int(theta2))+'\n', str(int(theta3))]:
+        file_object.writelines(line)
+
+    # # convert to float to work with conversion function
+    # theta1, theta2, theta3 = float(theta1), float(theta2), float(theta3)
     # coordinates of the end effector
     x1, y1, z1 = forward_kin_end(theta1, theta2, theta3)
     # coordinate of the mid joint
@@ -148,11 +151,11 @@ def process_coordinates():
     # converted angles
     theta1, theta2, theta3 = coordinates_to_angles(x, y, z)
     # export to a txt file
-    theta1, theta2, theta3 = str(round(theta1,2)), str(round(theta2,2)), str(round(theta3,2))
     file_object = open(r"web/sources/command_info.txt", "w")
-    for line in [theta1+'\n', theta2+'\n', theta3]:
+    for line in [str(int(theta1))+'\n', str(int(theta2))+'\n', str(int(theta3))]:
         file_object.writelines(line)
 
+    theta1, theta2, theta3 = str(round(theta1,2)), str(round(theta2,2)), str(round(theta3,2))
     content = {'x': str(x), 'y':str(y), 'z':str(z),
                'theta1': theta1, 'theta2': theta2, 'theta3': theta3}
     return render_template("main.html", sent_back_coordinates=True, **content)
