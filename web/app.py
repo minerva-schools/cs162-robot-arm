@@ -1,5 +1,5 @@
 #Importing All the needed libraries
-from . import db, app, login
+# from . import db, app, login
 import os #To handle files path
 from flask import Flask, render_template, redirect, request, send_file, g, session #Main Flask
 from flask_login import LoginManager, UserMixin, current_user, login_user, login_required, logout_user #To create the Login
@@ -7,6 +7,20 @@ from flask_sqlalchemy import SQLAlchemy #SQL Alchemy to create the database
 import sys
 from werkzeug.security import generate_password_hash, check_password_hash
 from .robotmodel.python_to_aduino import forward_kin_end, forward_kin_mid, coordinates_to_angles
+
+files_path = os.path.dirname(os.path.abspath(__file__)) #Setting the path of the main directory
+database_main_file = "sqlite:///{}".format(os.path.join(files_path, "primary.db")) #The path of the main database
+
+app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = database_main_file
+app.secret_key = "A06748581"
+
+login = LoginManager()
+login.init_app(app)
+login.login_view = 'login'
+
+db = SQLAlchemy(app)
+
 #Creating the primary database
 class User(UserMixin, db.Model): # A table to store users data
     __tablename__ = 'User'
