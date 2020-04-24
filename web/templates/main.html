@@ -14,14 +14,23 @@
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- <script src="jquery.js"></script> -->
+    <!-- <script src="jquery.js">  </script> -->
 </head>
 
+<script>    
+    window.setTimeout(function(){
+      window.location.href = "/";}, 300000);
+</script>
+
 <body>
+    <!--Temporary change. Need it for testing.-->
+    <br>
+    <a href="/">Exit the main control room</a>
+    <!--End of change-->
     <main class="recording">
         <div class="title small_logo">
                 <a href="{{ url_for('welcome') }}">
-                  <h3>RoboArm</h3>
+                  <h1>RoboArm</h1>
                 </a>
         </div>
         <button class="settings_button"><img src="static/images/cog.png" alt="settings icon"></button>

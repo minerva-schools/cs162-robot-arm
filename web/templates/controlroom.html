@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RoboArm Viewer</title>
+    <meta name="description" content="RoboArm | CS162 project">
+    <meta name="author" content="Gerardo Valdez">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_waitroom.css') }}">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="jquery.js">  </script> -->
+</head>
+
+<body>
+    <h1> This is the control room </h1>
+
+    <table style="width:80%; align='center' ; display:inline-table">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Student</th>
+            <th>Logged In</th>
+            <th>Waiting to use Robot Arm</th>
+            <th>Time</th>
+        </tr>
+        {% for user in userlist %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.student }}</td>
+            <td>{{ user.logged_in }}</td>
+            <td>{{ user.in_cue }}</td>
+            <td>{{ user.time }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
