@@ -110,6 +110,8 @@ def logout():
 
 """
 This functions sends the user to waitroom after they have logged in
+The reason for this addition is that it keeps in mind the scalability of the project
+Where in future if more robots are added, we can control the user traffic in each room accordingly
 """
 
 @app.route('/waitroom', methods=["GET", "POST"])
@@ -152,7 +154,7 @@ def process_angles():
     content = {'x1': str(round(x1,2)), 'y1':str(round(y1,2)), 'z1':str(round(z1,2)),
                'x2': str(round(x2,2)), 'y2':str(round(y2,2)), 'z2':str(round(z2,2)),
                'theta1': str(theta1), 'theta2': str(theta2), 'theta3': str(theta3)}
-    return render_template("main.html", sent_back=True, sent_back_angles=True, **content)
+    return render_template("main.html", sent_back_angles=True, **content)
 
 @app.route('/main/send_coordinates', methods=["POST"])
 @login_required
@@ -169,7 +171,7 @@ def process_coordinates():
     theta1, theta2, theta3 = str(round(theta1,2)), str(round(theta2,2)), str(round(theta3,2))
     content = {'x': str(x), 'y':str(y), 'z':str(z),
                'theta1': theta1, 'theta2': theta2, 'theta3': theta3}
-    return render_template("main.html", sent_back=True, sent_back_coordinates=True, **content)
+    return render_template("main.html", sent_back_coordinates=True, **content)
 
 # allows downloading the updated file using url '/download'
 @app.route('/download')

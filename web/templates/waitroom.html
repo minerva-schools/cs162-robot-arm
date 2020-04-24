@@ -9,6 +9,7 @@
     <title>RoboArm Waitroom</title>
 
     <!-- <link rel="stylesheet" href="styles.css"> -->
+    <!-- Created a new style.css sheet for ease of work for me as I was founding it hard to integrate the style with the already build style sheet-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style_waitroom.css') }}">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
@@ -19,7 +20,7 @@
 
 
 <body>
-
+    <!-- Two grids for the the top, right one: the logout and observe room redirect buttons | left one: the logo that also redirects to observe room-->
     <div class='head'>
         <div class="leftside">
         <a href="{{ url_for('observe') }}" style="text-decoration:none; color: white;"><h3>RoboArm: Waitroom</h3></a>
@@ -36,20 +37,25 @@
         <!-- Top Container -->
         <section class="top-container">
           <header class="showcase">
+            <!-- Adds the welcome note with the user name-->
             <h1>Welcome {{current_user.username}}!</h1>
             <br>
             <br>
             <br>
+            <!-- Adds the user wait time, Just a placeholder JS counter for now. Will Integrate after I recieve teh backend work on this from another team member-->
             <h3>Your Wait Time is:</h3>
             <h2 id="demo"> </h2>
             <h3>Your Number in Queue is:</h3>
+            <!--Adds the user number in the queue, Just a placeholder for now. Will Integrate after I recieve the backend work on this from another team member-->
             <h2>2nd</h2>
           </header>
+          <!--Create a class with two further subclasses for total robots available. For now Just two of them, can be added more-->
           <div class="top-box top-box-a">
             <h4>RoboArm 1</h4>
             <p class="room">Enter Room 1</p>
             <a href="{{ url_for('home') }}" class="btn">Enter</a>
           </div>
+          <!-- Just a placeholder for now, If another robot is added, thsi room will also be available-->
           <div class="top-box top-box-b">
             <h4>RoboArm 2</h4>
             <p class="room">Room 2 Not Connected</p>
@@ -58,9 +64,6 @@
         </section>
         <div class="footer">&copy;Robot Arm Team 2020</div>
         <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
-
-
-    
 
 </body>
 
