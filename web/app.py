@@ -6,7 +6,8 @@ from flask_login import LoginManager, UserMixin, current_user, login_user, login
 from flask_sqlalchemy import SQLAlchemy #SQL Alchemy to create the database
 import sys
 from werkzeug.security import generate_password_hash, check_password_hash
-from .robotmodel.python_to_aduino import forward_kin_end, forward_kin_mid, coordinates_to_angles
+import math
+# from .robotmodel.python_to_aduino import forward_kin_end, forward_kin_mid, coordinates_to_angles
 #Creating the primary database
 class User(UserMixin, db.Model): # A table to store users data
     __tablename__ = 'User'
@@ -20,6 +21,55 @@ class User(UserMixin, db.Model): # A table to store users data
 db.create_all()
 db.session.commit()
 
+
+def forward_kin_end(q1,q2,q3):
+    q1 = math.radians(q1) #changes angle from radians
+    q2 = math.radians(q2) #changes angle from radians
+    q3 = math.radians(q3) #changes angle from radians
+
+    x = 8 * ((1*(math.cos(q1)* math.sin(q2))) #Calculates X coordinate based on the transformation matrix shown above
+
+           + (1*(math.cos(q1)* math.cos(q3)*math.sin(q2)))
+
+           + (1*(math.cos(q1)* math.cos(q2)*math.sin(q3))))
+
+
+    y = 8 * ((1*(math.sin(q1)* math.sin(q2))) #Calculates Y coordinate based on the transformation matrix shown above
+
+           + (1*(math.cos(q3)* math.sin(q1)*math.sin(q2)))
+
+           + (1*(math.cos(q2)* math.sin(q1)*math.sin(q3))))
+
+    z = 8 * (0.3125                         #Calculates Z coordinate based on the transformation matrix shown above
+
+             + (1*math.cos(q2))
+
+             + (1*(math.cos(q2)* math.cos(q3)))
+
+             - (1*(math.sin(q2)*math.sin(q3))))
+
+    return (x, y, z)
+
+
+
+"""
+This function calculates the forward kinmatics but for the middle joint this time
+This function Changes joints angles into XYZ coordinates for the middle joint
+This function is used mainly to be able to represent the arm graphically
+To represent the arm graphically we need to change angles into coordinates for each joint
+"""
+
+def forward_kin_mid(q1,q2,q3):
+    q1 = math.radians(q1)
+    q2 = math.radians(q2)
+
+    x = 8 * (math.cos(q1) * math.sin(q2))
+
+    y = 8 * (math.sin(q1) * math.sin(q2))
+
+    z = 2.5 + (8 * math.cos(q2))
+
+    return x, y, z
 
 #The primary functions
 
@@ -140,7 +190,7 @@ def process_angles():
 
     # export to a txt file
     file_object = open(r"web/sources/command_info.txt", "w")
-    for line in [str(int(theta1))+'\n', str(int(theta2))+'\n', str(int(theta3))]:
+    for line in ['angle\n', str(int(theta1))+'\n', str(int(theta2))+'\n', str(int(theta3))]:
         file_object.writelines(line)
 
     # # convert to float to work with conversion function
@@ -152,7 +202,7 @@ def process_angles():
     content = {'x1': str(round(x1,2)), 'y1':str(round(y1,2)), 'z1':str(round(z1,2)),
                'x2': str(round(x2,2)), 'y2':str(round(y2,2)), 'z2':str(round(z2,2)),
                'theta1': str(theta1), 'theta2': str(theta2), 'theta3': str(theta3)}
-    return render_template("main.html", sent_back_angles=True, **content)
+    return render_template("main.html", sent_back=True, sent_back_angles=True, **content)
 
 @app.route('/main/send_coordinates', methods=["POST"])
 @login_required
@@ -160,16 +210,19 @@ def process_coordinates():
     # coordinate measures from user
     x, y, z = float(request.form['x']), float(request.form['y']), float(request.form['z'])
     # converted angles
-    theta1, theta2, theta3 = coordinates_to_angles(x, y, z)
+    # theta1, theta2, theta3 = coordinates_to_angles(x, y, z)
     # export to a txt file
     file_object = open(r"web/sources/command_info.txt", "w")
-    for line in [str(int(theta1))+'\n', str(int(theta2))+'\n', str(int(theta3))]:
+    for line in ['coordinate\n', str(int(x))+'\n', str(int(y))+'\n', str(int(z))]:
+
+    # for line in [str(int(theta1))+'\n', str(int(theta2))+'\n', str(int(theta3))]:
         file_object.writelines(line)
 
-    theta1, theta2, theta3 = str(round(theta1,2)), str(round(theta2,2)), str(round(theta3,2))
-    content = {'x': str(x), 'y':str(y), 'z':str(z),
-               'theta1': theta1, 'theta2': theta2, 'theta3': theta3}
-    return render_template("main.html", sent_back_coordinates=True, **content)
+    # theta1, theta2, theta3 = str(round(theta1,2)), str(round(theta2,2)), str(round(theta3,2))
+    # content = {'x': str(x), 'y':str(y), 'z':str(z),
+    #            'theta1': theta1, 'theta2': theta2, 'theta3': theta3}
+    content = {'x': str(x), 'y':str(y), 'z':str(z)}
+    return render_template("main.html", sent_back=True, sent_back_coordinates=True, **content)
 
 # allows downloading the updated file using url '/download'
 @app.route('/download')
