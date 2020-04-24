@@ -18,7 +18,7 @@ function cancel_login() {
   $('.login_message').remove();
 }
 
-function to_angles() {
+function from_angles() {
     $('.c_coordinates').css({
         visibility: "hidden"
     });
@@ -40,7 +40,7 @@ function to_angles() {
     });
 }
 
-function to_coordinates() {
+function from_coordinates() {
     $('.c_angles').css({
         visibility: "hidden"
     });
@@ -183,17 +183,17 @@ $(document).ready(function () {
     }
 
     // change of controls
-    to_coordinates()
-    var controls = "coordinates";
+    from_angles()
+    var controls = "angles";
 
     $('.ct').click(function () {
-        if (controls == "coordinates") {
-            to_angles()
-            controls = "angles"
-        } else if (controls == "angles") {
+        if (controls == "angles") {
+            from_coordinates()
+            controls = "coordinates"
+        } else if (controls == "coordinates") {
             // $('.main_buttons').removeClass('right_buttons').addClass('left_buttons');
-            to_coordinates()
-            controls = "coordinates";
+            from_angles()
+            controls = "angles";
         }
     });
 
@@ -210,18 +210,18 @@ var x = setInterval(function() {
 
   // Get today's date and time
   var now = new Date().getTime();
-    
+
   // Find the distance between now and the count down date
   var distance = countDownDate - now;
-    
+
   // Time calculations for days, hours, minutes and seconds
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
+
   // Output the result in an element with id="demo"
   document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-    
-  // If the count down is over, write some text 
+
+  // If the count down is over, write some text
   if (distance < 0) {
     clearInterval(x);
     document.getElementById("demo").innerHTML = "EXPIRED";
