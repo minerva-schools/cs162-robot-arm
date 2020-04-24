@@ -16,6 +16,12 @@
     <!-- <script src="jquery.js"></script> -->
 </head>
 
+<!-- After 5 minutes, you will be redirected to the observe page -->
+
+<script>    
+  window.setTimeout(function(){
+    window.location.href = "/main";}, 300000*{{cue_number}} + 3000);
+</script>
 
 
 <body>
@@ -41,9 +47,9 @@
             <br>
             <br>
             <h3>Your Wait Time is:</h3>
-            <h2 id="demo"> </h2>
+            <h2 id="timer"> </h2>
             <h3>Your Number in Queue is:</h3>
-            <h2>2nd</h2>
+            <h2> {{cue_number}} </h2>
           </header>
           <div class="top-box top-box-a">
             <h4>RoboArm 1</h4>
@@ -58,6 +64,24 @@
         </section>
         <div class="footer">&copy;Robot Arm Team 2020</div>
         <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+
+        <script> 
+          window.onload = alert(localStorage.getItem("time_remaining"));
+            var deadline = new Date();
+            deadline.setMinutes(deadline.getMinutes() + 5 * ({{ cue_number }}));
+            var x = setInterval(function() { 
+            var now = new Date().getTime(); 
+            var t = deadline - now; 
+            var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+            var minutes = (hours * 60 + Math.floor((t % (1000 * 60 * 60)) / (1000 * 60))); 
+            var seconds = Math.floor(((t % (1000 * 60)) / 1000)); 
+            document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s "; 
+              if (t < 0) { 
+                  clearInterval(x); 
+                  document.getElementById("timer").innerHTML = "You will be redirected shortly"; 
+              } 
+          }, 1000);
+          </script> 
 
 
     

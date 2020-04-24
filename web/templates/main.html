@@ -17,7 +17,34 @@
     <!-- <script src="jquery.js"></script> -->
 </head>
 
+<!-- To allow everyone to use the robot arm, every user will have 5 minutes -->
+<!-- After 5 minutes, you will be redirected back to the observe page -->
+
+<script>    
+    window.setTimeout(function(){
+      window.location.href = "/observe";}, 300000);
+</script>
+
 <body>
+
+    <script> 
+        var deadline = new Date();
+        deadline.setMinutes(deadline.getMinutes() + 5);
+        var x = setInterval(function() { 
+        var now = new Date().getTime(); 
+        var t = deadline - now; 
+        var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+        var minutes = (hours * 60 + Math.floor((t % (1000 * 60 * 60)) / (1000 * 60))); 
+        var seconds = Math.floor(((t % (1000 * 60)) / 1000)); 
+        document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s "; 
+            if (t < 0) { 
+                clearInterval(x); 
+                document.getElementById("timer").innerHTML = "You will be redirected shortly"; 
+              } 
+            }, 1000);
+    </script>
+
+
     <main class="recording">
         <div class="title small_logo">
             <a href="{{ url_for('welcome') }}">
@@ -101,8 +128,11 @@
                 {% endif %}
                 <input type="submit" value="Submit" class="cf_submit">
             </form>
-
+            
             <div class="c_howto">
+                <h3>Your Time Remaining is:</h3>
+                <h2 id="timer">  </h2>
+                <br>
                 <h4>How to</h4>
                 <p>You can input two types of information, but you can only input one at a time.</p>
                 <p>Your first option is sending the robot coordinates to which the head should move.</p>
@@ -146,6 +176,27 @@
         });
 
     </script>
+
+<!-- The following script attempts to calculate the time remaining 
+    for the user controlling the robot arm. This var will be used to 
+    calculate the timer in the waitroom and redirect the next user 
+    in the cue to this main room, and control the robot -->
+
+    <script> 
+    window.onload { 
+        var time_in_5m = new Date(); 
+        var time_in_5m.setMinutes(time_in_5m.getMinutes() + 5);
+        var x = setInterval(function() { 
+        var now = new Date().getTime(); 
+        var t = deadline - now; 
+        var minutes = Math((t % (1000 * 60 * 60)) / (1000 * 60)); 
+        if (t < 0) {t = 0;}; 
+        localStorage.setItem("time_remaining",minutes); }, 1000);
+    }   
+
+    </script>
+
+
 </body>
 
 </html>

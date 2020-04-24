@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Robot Arm Control Room</title>
+
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_waitroom.css') }}">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <!-- <script src="jquery.js"></script> -->
+</head>
+
+<body>
+
+    <div class='head'>
+        <div class="leftside">
+        <a href="{{ url_for('observe') }}" style="text-decoration:none; color: white;"><h3>RoboArm: Waitroom</h3></a>
+        </div>
+        <div class="rightside">
+          <a href="{{ url_for('observe') }}" class="btn">Observe</a>
+          <a href="{{ url_for('logout') }}" class="btn">Log Out</a>
+
+
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <!-- Top Container -->
+        <section class="top-container">
+          <header class="showcase">
+            
+            <section class="top-container">
+          
+                <table style="width:100%; align='center' ; display:inline-table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Student</th>
+                        <th>Logged In</th>
+                        <th>Waiting to use Robot Arm</th>
+                        <th>Time</th>
+                        <th>In Cue</th>
+                        <th>Controller</th>
+                    {% for user in userlist %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.student }}</td>
+                        <td>{{ user.logged_in }}</td>
+                        <td>{{ user.in_cue }}</td>
+                        <td>{{ user.time }}</td>
+                        <td>{{ user.in_cue }}</td>
+                        <td>{{ user.controller }}</td>
+    
+                    </tr>
+                    {% endfor %}
+                </table>
+
+          </header>
+        </section>
+        <div class="footer">&copy;Robot Arm Team 2020</div>
+    
+
+</body>
+
+</html>

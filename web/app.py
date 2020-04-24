@@ -4,15 +4,24 @@ import os #To handle files path
 from flask import Flask, render_template, redirect, request, send_file, g, session #Main Flask
 from flask_login import LoginManager, UserMixin, current_user, login_user, login_required, logout_user #To create the Login
 from flask_sqlalchemy import SQLAlchemy #SQL Alchemy to create the database
-import sys
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
+import time
+import sys
 #from .robotmodel.python_to_aduino import forward_kin_end, forward_kin_mid, coordinates_to_angles
+
 #Creating the primary database
 class User(UserMixin, db.Model): # A table to store users data
     __tablename__ = 'User'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(200))
     password = db.Column(db.String(200))
+    student = db.Column(db.Integer) #Equals 1 if this is a student, and 0 otherwise
+    logged_in = db.Column(db.Integer, default=0) #Equals 1 if logged in, and 0 if you are not logged in
+    in_cue = db.Column(db.Integer, default=0) #Equals 1 if user is waiting for access to the robot arm, and 0 if not
+    time = db.Column(db.DateTime, default=datetime.utcnow) #Records the time the user requests access to the robot arm controls
+    controller = db.Column(db.Integer, default=0) #Records if someone is using the control room
+                                                           
     def __repr__(self):
         return "<Username: {}>".format(self.username)
 
@@ -28,16 +37,32 @@ This function redirects users to the Login page
 """
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
+    if current_user is not None:
+        current_user.logged_in = 0 #update the database
+        current_user.controller = 0
+        db.session.commit()
+        logout_user()      #If logged in, every time you go to the home page you will be automatically logged out
     return render_template('index.html')
 
 @app.route('/observe')
 def observe():
+    if current_user is not None:
+        current_user.in_cue = 0 #update the database
+        current_user.controller = 0
+        db.session.commit()
     return render_template('observe.html')
 
 @app.route('/help')
 def help():
     return render_template("help.html")
 
+@app.route('/logoutallusers')
+def logoutallusers():
+    list_of_all_users = User.query.all()
+    for user in list_of_all_users:
+        user.controller = 0
+        db.session.commit()
+    return redirect('/')
 
 @login.user_loader
 def load_user(id):
@@ -67,8 +92,14 @@ def register():
             error = 'Passwords do not match. Please, try again.'
             return render_template('index.html', error_register=error)
 
+        # check if user is a student
+        if "@minerva.kgi.edu" in username:
+            is_student = 1
+        else:
+            is_student = 0
+
         # store user information, with password hashed
-        new_user = User(username=username, password=generate_password_hash(password, method='sha256'))
+        new_user = User(username=username, password=generate_password_hash(password, method='sha256'), student=is_student)
         db.session.add(new_user)
         db.session.commit()
         register_success_message = 'Registered successful. Please log in'
@@ -78,9 +109,10 @@ def register():
 
 
 """
-This function is responsible for logging users in to their personal kanban board
-This function validates users credentials, if the user is registered it redirects to the Kanban board
-If the user is not registered it displays an error that the user is not registered
+This function is responsible for logging users to the server.
+This function validates user credentials.
+If the user is registered it redirects to the observe page of the robotic arm.
+If the user is not registered it displays an error that the user is not registered.
 """
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -94,6 +126,11 @@ def login():
             error = 'The password or the username you entered is not correct!'
             return render_template('index.html', message=error)
         login_user(user)
+        user.controller = 0 # update the database
+        user.logged_in = 1
+        user.time = datetime.now()
+        user.in_cue = 1
+        db.session.commit()
         return redirect('/waitroom')
         # return render_template('main.html')
     elif request.method == 'GET':
@@ -105,29 +142,51 @@ This function is responsible for logging users out
 @app.route('/logout', methods=['GET', 'POST'])
 @login_required
 def logout():
+    user.logged_in = 0 #update the database
+    db.session.commit()
     logout_user()
     return redirect('login')
 
 """
 This functions sends the user to waitroom after they have logged in
 """
-
 @app.route('/waitroom', methods=["GET", "POST"])
 @login_required
 def waitroom():
-    g.user = current_user
-    return render_template("waitroom.html", myuser=current_user)
+    '''
+    This function retrieves a list of all users waiting to use the robot arm
+    Then it sorts it by who came first, and second by who is a student
+    '''
+    user_list = User.query.filter_by(logged_in=1).filter_by(in_cue=1).all() #returns the list of users waiting to use the robot
+    user_list.sort(key=lambda User: User.time)                  #sorts the list by who came first
+    user_list.sort(key=lambda User: User.student, reverse=True) #sorts the list by who is a student
+    #print(current_user, file=sys.stderr)
+    #print(user_list, file=sys.stderr)
+    #print(user_list.index(current_user)+1)
+    place_in_line = user_list.index(current_user)
+    return render_template("waitroom.html", cue_number=place_in_line)
 
 
 """
-This is the primary function responsible for displaying the tasks
-This function does not allow duplicate tasks to exist
+This is the main room, where the user can observe the stream of the robot arm
+This function requires the user to be logged in using his credentials or as guest
 """
 @app.route('/main', methods=["GET", "POST"])
 @login_required
 def home():
-    g.user = current_user
-    return render_template("main.html", myuser=current_user)
+    list_of_all_users = User.query.all()
+    controllers = 0
+    for user in list_of_all_users:
+        controllers += user.controller
+
+    if controllers > 0:
+        error_message = "Someone is currently using the robot arm. Please wait your turn"
+        print(error_message, file=sys.stderr)
+        return render_template("index.html", message=error_message)
+    else:
+        current_user.controller = 1
+        g.user = current_user
+        return render_template("main.html", myuser=current_user)
 
 @app.route('/main/send_angles', methods=["POST"])
 @login_required
@@ -171,11 +230,31 @@ def process_coordinates():
                'theta1': theta1, 'theta2': theta2, 'theta3': theta3}
     return render_template("main.html", sent_back_coordinates=True, **content)
 
+@app.route('/controlroom', methods=["GET"]) #This is a master controlroom that will show information about the users.
+@login_required
+def controlroom():
+    print(current_user, file=sys.stderr)
+    print(current_user.username, file=sys.stderr)
+    if current_user.username == 'gera@minerva.kgi.edu' or \
+                                'mikulas.plesak@minerva.kgi.edu' or \
+                                'ara.mkhoyan@minerva.kgi.edu' or \
+                                'quang.tran@minerva.kgi.edu' or \
+                                'a.kamel@minerva.kgi.edu' or \
+                                'arham.hameed@minerva.kgi.edu' or \
+                                'psterne@minerva.kgi.edu':
+        current_user.controller = 0
+        list_of_all_users = User.query.all()
+        return render_template('controlroom.html', userlist=list_of_all_users)
+    else:
+        error_message = 'The control room is only for admin. Please log in'
+        return render_template('index.html', message=error_message)
+
 # allows downloading the updated file using url '/download'
 @app.route('/download')
 def download():
     path = "sources/command_info.txt"
     return send_file(path, as_attachment=True)
+
 #Running the application
 if __name__ == "__main__":
     app.run(debug=True)
