@@ -3,9 +3,9 @@
 from keras.models import load_model
 import numpy as np #To Generate the numby arrays
 import math #Used for forward Kinamatics calculations
-import matplotlib.pyplot as plt #Used to generate the 3D plots
-from matplotlib import pyplot #Used to generate the 3D plots
-from mpl_toolkits.mplot3d import Axes3D #Used to generate the 3D plots
+# import matplotlib.pyplot as plt #Used to generate the 3D plots
+# from matplotlib import pyplot #Used to generate the 3D plots
+# from mpl_toolkits.mplot3d import Axes3D #Used to generate the 3D plots
 import random #used for the dataset generation
 import keras #Using Keras library to build the model
 from keras import models #Using Keras library to build the model
