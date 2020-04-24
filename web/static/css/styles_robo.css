@@ -232,13 +232,15 @@ a {
     position: relative;
 }
 
-.ct_c {
+.ct_a {
     right: -10px;
 }
 
-.ct_a {
+.ct_c {
     left: -10px;
 }
+
+
 
 .c_form {
     grid-area: c_form;
@@ -887,7 +889,7 @@ video {
     top: 12%;
     height: 60%;
     width: 75%;
-    
+
 }
 
 .txt_info {
