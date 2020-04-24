@@ -244,12 +244,10 @@ def controlroom():
                                 'psterne@minerva.kgi.edu':
         current_user.controller = 0
         list_of_all_users = User.query.all()
-        print('Successfully accessed controlroom.html logged in as user', file=sys.stderr)
         return render_template('controlroom.html', userlist=list_of_all_users)
     else:
-        print('Unsuccessfully accessed controlroom.html', file=sys.stderr)
         error_message = 'The control room is only for admin. Please log in'
-        return render_template('controlroom.html', userlist=list_of_all_users)
+        return render_template('index.html', message=error_message)
 
 # allows downloading the updated file using url '/download'
 @app.route('/download')
