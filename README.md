@@ -31,7 +31,7 @@ If the above code does not work, you could also do
 
 To activate the virtualenv:
 
-    $ source venv/bin/activate
+    $ source .venv/bin/activate
 
 Or, if you are **using Windows** - [reference source:](https://stackoverflow.com/questions/8921188/issue-with-virtualenv-cannot-activate)
 
@@ -55,9 +55,8 @@ All environment variables are stored within the `.env` file and loaded with dote
 
 Start the server by running:
 
-    $ export FLASK_ENV=development
-    $ export FLASK_APP=web
-    $ python3 -m flask run
+    $ export FLASK_APP=web/app.py
+    $ flask run
 
 ## Unit Tests
 To run the unit tests use the following commands:
